@@ -9,11 +9,11 @@
     </head>
     <body>
         <header>
-            <img class="logo" src="{% static 'music/logo.jpg' %}" alt="logo">
+            <a href="{% url 'music:index' %}"><img class="logo" src="{% static 'music/logo.jpg' %}" alt="logo"></a>
             <nav>
                 <ul class="nav_links">
-                    <li><a href="about">About</a></li>
-                    <li><a href="support">Support</a></li>
+                    <li><a href="{% url 'music:about' %}">About</a></li>
+                    <li><a href="{% url 'music:support' %}">Support</a></li>
                     <li><a href="#">Log In</a></li>
                 </ul>
             </nav>
