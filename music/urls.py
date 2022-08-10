@@ -5,5 +5,6 @@ app_name = "music"
 urlpatterns = [
     path('', views.index, name='index'),
     path('about', views.about, name='about'),
-    path('support', views.support, name='support')
+    path('support', views.support, name='support'),
+    path('browse', views.browse, name='browse')
 ]
