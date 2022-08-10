@@ -8,7 +8,7 @@
 }
 
 body {
-    background-color: darkslateblue;
+    background-color: rgb(60, 58, 58);
 }
 
 /*navbar*/
@@ -53,7 +53,57 @@ header {
     color: white;
 }
 
-.name {
-    
+/*body*/
+h1, p, h2 {
+    font-family: "Source Sans Pro", sans-serif;
+    color: white;
+    text-decoration: none;
+    text-align: center;
 }
-/**/
+
+h1 {
+    padding: 20px 0px;
+}
+
+p {
+    padding: 0px 30px;
+}
+
+.img1 {
+    height: 300px;
+    width: 500px;
+    padding: 20px 20px;
+}
+.mission {
+    display: flex;
+    flex-flow: row;
+    justify-content: space-around;
+    align-items: center;
+}
+
+hr.solid {
+    border-top: 3px solid black;
+}
+
+.button1 {
+    background-color:rgb(133, 0, 133);
+    color: white;
+    width: 180px;
+    height: 70px;
+    align-self: center;
+    padding: 15px 30px;
+    border-radius: 5px;
+    border:none;
+}
+
+.button1:hover {
+    background-color:rgb(200, 135, 216); /* Green */
+}
+
+.browse {
+    display: flex;
+    flex-flow: column;
+    justify-content: space-between;
+    gap: 30px;
+    padding: 20px 0px;
+}
