@@ -53,7 +53,7 @@ header {
     color: white;
 }
 
-/*body*/
+/*text format*/
 .text {
     font-family: "Source Sans Pro", sans-serif;
     color: white;
@@ -117,9 +117,22 @@ hr.solid {
 .row {
     display: flex;
     flex-flow: row;
+    gap: 20px;
+    flex-wrap: wrap;
 }
 
 .scroll {
     display: flex;
     flex-flow: column;
+    gap: 10px;
+}
+
+.thumbnail {
+    height: 200px;
+    width: 200px;
+}
+
+.genre {
+    text-decoration: underline;
+    padding-bottom: 10px;
 }
