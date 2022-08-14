@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from .models import Songs
 
 # Create your views here.
 def index(request):
@@ -11,5 +12,8 @@ def support(request):
     return render(request, "music/support.html")
 
 def browse(request):
-    return render(request, "music/browse.html")
+    songs = Songs.objects.all()
+    return render(request, "music/browse.html", {
+        "songs": songs,
+    })
 

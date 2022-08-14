@@ -1,6 +1,23 @@
 {% extends "music/base.html" %}
 
 {% block body %}
-    <h1>Browse</h1>
-
+    <h1 class="text">Browse</h1>
+    <div class="text head">
+        <h2>Top Music</h2>
+        <div class="row">
+            {% for song in songs %}
+            <div class="scroll">
+                <h4>{{ song.title }}</h6>
+                <img src="{{ song.image.url }}" alt="image">
+                <h5> {{ song.artist }}</p>
+            </div>
+            {% endfor %}
+        </div>
+        <h2>Pop</h2>
+        <h2>Hip-Hop</h2>
+        <h2>Rock</h2>
+        <h2>Jazz</h2>
+        <h2>Blues</h2>
+        <h2>EDM</h2>
+    </div>
 {% endblock %}

@@ -54,13 +54,14 @@ header {
 }
 
 /*body*/
-h1, p, h2 {
+.text {
     font-family: "Source Sans Pro", sans-serif;
     color: white;
     text-decoration: none;
     text-align: center;
 }
 
+/*about page*/
 h1 {
     padding: 20px 0px;
 }
@@ -106,4 +107,19 @@ hr.solid {
     justify-content: space-between;
     gap: 30px;
     padding: 20px 0px;
+}
+
+/*browse page*/
+.head {
+    text-align: left;
+}
+
+.row {
+    display: flex;
+    flex-flow: row;
+}
+
+.scroll {
+    display: flex;
+    flex-flow: column;
 }
