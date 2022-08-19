@@ -20,15 +20,10 @@
         <form method="POST">
             {% csrf_token %}
             <div class="form">
-                <h1 class="text">Log In</h1>
-                <input type="text" name="username" placeholder="Username">
-                <input type="password" name="password" placeholder="Password">
-                <input type="submit" value="Login">
+                <h1 class="text">Sign Up</h1>
+                {{ form }}
+                <input type="submit" value="Sign Up">
             </div>
         </form>
-        <div class="text">
-            <p>Do not have an account?:</p>
-            <a href="{% url 'signup' %}">Sign Up</a>
-        </div>
     </body>
 </html>

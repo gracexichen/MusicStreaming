@@ -3,6 +3,7 @@ from django.shortcuts import render
 from django.urls import reverse
 from .models import Songs
 from django.contrib.auth import authenticate,login,logout
+from django.contrib.auth.forms import UserCreationForm
 
 # Create your views here.
 #main webpage
@@ -39,10 +40,24 @@ def login_view(request):
             return render(request, "music/login.html", {
                 "message": "Invalid credentials."
             })
-    return render(request, "music/login.html")
+    else:        
+        return render(request, "music/login.html")
 
 def logout_view(request):
     logout(request)
-    return render(request, "music/login.html", {
-        "message": "Logged out."
-    })
+    return HttpResponseRedirect(reverse('login'))
+
+def signup_view(request):
+    if request.method == "POST":
+        form = UserCreationForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return HttpResponseRedirect(reverse('browse'))
+        else:
+            return render(request, "music/about.html")
+    else:
+        form = UserCreationForm()
+        context = {
+            "form": form
+        }
+    return render(request, "music/signup.html",context)
