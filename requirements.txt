@@ -1,12 +1,13 @@
-asgiref==3.5.2
-backports.zoneinfo==0.2.1
-dj-database-url==1.0.0
-Django==4.1
-django-heroku==0.3.1
+asgiref @ file:///home/conda/feedstock_root/build_artifacts/asgiref_1652752042988/work
+certifi==2022.6.15
+dj-database-url==0.5.0
+Django @ file:///D:/bld/django_1659566348001/work
+django-heroku @ file:///home/conda/feedstock_root/build_artifacts/django-heroku_1642605802805/work
 gunicorn==20.1.0
-Pillow==9.2.0
-psycopg2==2.9.3
-sqlparse==0.4.2
-tzdata==2022.2
-whitenoise==6.2.0
-windows-curses==2.3.0
+psycopg2 @ file:///D:/bld/psycopg2-split_1640944706772/work
+sqlparse @ file:///home/conda/feedstock_root/build_artifacts/sqlparse_1631317292236/work
+typing_extensions @ file:///home/conda/feedstock_root/build_artifacts/typing_extensions_1656706066251/work
+tzdata @ file:///home/conda/feedstock_root/build_artifacts/python-tzdata_1660582595106/work
+whitenoise @ file:///home/conda/feedstock_root/build_artifacts/whitenoise_1654461900330/work
+wincertstore==0.2
+windows-curses @ file:///D:/a/_temp/windows-curses/conda_build/conda-bld/windows-curses_1638059670227/work/windows_curses-2.3.0-cp39-cp39-win_amd64.whl
