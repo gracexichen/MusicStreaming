@@ -1,17 +1,30 @@
-{% extends "music/base.html" %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>CELESTE MUSIC</title>
+        <link rel="stylesheet" type="text/css" href="{% static 'music/style.css' %}">
+    </head>
+    <body>
+        <div>
+        <div class="logo">
+            <img class="logo" src="{% static 'music/logo.jpg' %}" alt="logo">     
+            <h5 class="text">Celeste Music</h5>
+        </div>
 
-{% block body %}
-    <h1>Login</h1>
-
-    {% if message %}
-        <div>{{ message }}</div>
-    {% endif %}
-    
-    <form method="POST">
-        {% csrf_token %}
-        <input type="text" name="username" placeholder="Username">
-        <input type="password" name="password" placeholder="Password">
-        <input type="submit" value="Login">
-    </form>
-
-{% endblock %}
+        {% if message %}
+            <div>{{ message }}</div>
+        {% endif %}
+        
+        <form method="POST">
+            {% csrf_token %}
+            <div class="form">
+                <h1 class="text">Log In</h1>
+                <input type="text" name="username" placeholder="Username">
+                <input type="password" name="password" placeholder="Password">
+                <input type="submit" value="Login">
+            </div>
+        </form>
+    </body>
+</html>

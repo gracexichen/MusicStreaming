@@ -136,3 +136,26 @@ hr.solid {
     text-decoration: underline;
     padding-bottom: 10px;
 }
+
+/*login*/
+.form {
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    gap: 30px;
+    border: 4px solid white;
+    margin-left: 150px;
+    margin-right: 150px;
+    padding-bottom: 30px;
+}
+.logo {
+    display: flex;
+    flex-flow: row;
+    align-items: center;
+    gap: 10px;
+}
+.logoname {
+    display: flex;
+    flex-flow: column;
+    align-self: center;
+}
