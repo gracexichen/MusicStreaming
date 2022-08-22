@@ -6,20 +6,35 @@
         <meta charset="UTF-8">
         <title>CELESTE MUSIC</title>
         <link rel="stylesheet" type="text/css" href="{% static 'music/style.css' %}">
+        <link rel="stylesheet" type="text/css" href="{% static 'music/header.css' %}">
+
+        <!--Satistfy Font-->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Satisfy&display=swap" rel="stylesheet">
     </head>
     <body>
-        <header>
-            <img class="logo" src="{% static 'music/logo.jpg' %}" alt="logo">
-            <nav>
-                <ul class="nav_links">
-                    <li><a href="{% url 'about' %}">About</a></li>
-                    <li><a href="{% url 'browse' %}">Browse</a></li>
-                    <li><a href="{% url 'support' %}">Support</a></li>
-                    <li><a href="{% url 'login' %}">Log In</a></li>
-                </ul>
-            </nav>
+        <header class="header">
+            <div class="left-section-header">
+                <button class="logo-button">
+                    <img class="logo" src="{% static 'music/logo.jpg' %}" alt="logo">
+                    <p class="logo-title">Celesete Music</p>
+                </button>   
+            </div>
+            <div class="right-section-header">
+                <nav>
+                    <ul class="nav_links">
+                        <li><a href="{% url 'index' %}">Home</a></li>
+                        <li><a href="{% url 'about' %}">About</a></li>
+                        <li><a href="{% url 'browse' %}">Browse</a></li>
+                        <li><a href="{% url 'support' %}">Support</a></li>
+                        <li><a href="{% url 'login' %}">Log In</a></li>
+                    </ul>
+                </nav>
+            </div>
         </header>
         {% block body %} 
         {% endblock %}
+        <script type="text/javascript" src="{% static 'music/script.js' %}"></script>
     </body>
 </html>
