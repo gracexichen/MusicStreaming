@@ -1,8 +1,30 @@
 {% extends "music/base.html" %}
 
 {% block body %}
-
-  
-
-
+<h1 class="text">Welcome, {{ request.user.username|title }}</h1>
+<div class="row">
+    {% for song in songs %}
+    <div class="scroll">
+        <h3>Title: {{ song.title }}</h3>
+        <img src="{{ song.image.url }}" alt="image" class="thumbnail">
+        <audio controls>
+            <source src="{{ song.audio.url }}" type="audio/mp3">
+        </audio>
+        <h4>Artists: {{ song.artist }}</h4>
+    </div>
+    {% endfor %}
+</div>
+<div class="row">
+    {% for song in songs %}
+    <div class="scroll">
+        <h3>Title: {{ song.title }}</h3>
+        <img src="{{ song.image.url }}" alt="image" class="thumbnail">
+        <audio controls>
+            <source src="{{ song.audio.url }}" type="audio/mp3">
+        </audio>
+        <h4>Artists: {{ song.artist }}</h4>
+    </div>
+    {% endfor %}
+</div>
+</div>
 {% endblock %}

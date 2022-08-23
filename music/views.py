@@ -4,11 +4,15 @@ from django.urls import reverse
 from .models import Songs
 from django.contrib.auth import authenticate,login,logout
 from django.contrib.auth.forms import UserCreationForm
+from .forms import UploadForm
 
 # Create your views here.
 #main webpage
 def index(request):
-    return render(request, "music/index.html")
+    songs = Songs.objects.all()
+    return render(request, "music/index.html", {
+        "songs": songs,
+    })
 
 def about(request):
     return render(request, "music/about.html")
@@ -16,11 +20,24 @@ def about(request):
 def support(request):
     return render(request, "music/support.html")
 
+def upload(request):
+    form = UploadForm()
+    if request.method == "POST":
+        form = UploadForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            return HttpResponseRedirect(reverse("index"))
+    else:
+        form = UploadForm()
+    context = {'form': form}
+    return render(request, "music/upload.html",context)
+
 def browse(request):
     songs = Songs.objects.all()
     return render(request, "music/browse.html", {
         "songs": songs,
     })
+
 
 #authentication
 def home(request):
@@ -35,7 +52,7 @@ def login_view(request):
         user = authenticate(request, username=username, password=password)
         if user is not None:
             login(request, user)
-            return HttpResponseRedirect(reverse("browse"))
+            return HttpResponseRedirect(reverse("index"))
         else:
             return render(request, "music/login.html", {
                 "message": "Invalid credentials."
