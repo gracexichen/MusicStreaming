@@ -25,7 +25,9 @@ def upload(request):
     if request.method == "POST":
         form = UploadForm(request.POST, request.FILES)
         if form.is_valid():
-            form.save()
+            obj = form.save(commit=False)
+            obj.artist = request.user
+            obj.save()
             return HttpResponseRedirect(reverse("index"))
     else:
         form = UploadForm()

@@ -2,8 +2,10 @@
 
 {% block body %}
 <h1 class="text">Welcome, {{ request.user.username|title }}</h1>
+<h2 class="text">My Music</h2>
 <div class="row">
     {% for song in songs %}
+    {% if song.artist == request.user %}
     <div class="scroll">
         <h3>Title: {{ song.title }}</h3>
         <img src="{{ song.image.url }}" alt="image" class="thumbnail">
@@ -12,10 +14,13 @@
         </audio>
         <h4>Artists: {{ song.artist }}</h4>
     </div>
+    {% endif %}
     {% endfor %}
 </div>
+<h2 class="text">Top Music</h2>
 <div class="row">
     {% for song in songs %}
+    {% if song.artist != request.user %}
     <div class="scroll">
         <h3>Title: {{ song.title }}</h3>
         <img src="{{ song.image.url }}" alt="image" class="thumbnail">
@@ -24,6 +29,7 @@
         </audio>
         <h4>Artists: {{ song.artist }}</h4>
     </div>
+    {% endif %}
     {% endfor %}
 </div>
 </div>
