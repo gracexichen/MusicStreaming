@@ -8,3 +8,7 @@ class Songs(models.Model):
     artist = models.ForeignKey(User, on_delete=models.CASCADE)
     image = models.ImageField(upload_to="media")
     audio = models.FileField(upload_to="media")
+
+class Profile(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    profilepic = models.ImageField(upload_to="media")

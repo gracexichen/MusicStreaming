@@ -13,13 +13,14 @@
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Satisfy&display=swap" rel="stylesheet">
+        
         <script type="text/javascript" src="{% static 'music/script.js' %}"></script>
     </head>
     <body>
         <header class="header">
             <div class="left-section-header">
                 <a href="{% url 'index' %}">
-                    <button type="button" class="logo-button" >
+                    <button type="button" class="logo-button">
                         <img class="logo" src="{% static 'music/logo.jpg' %}" alt="logo">
                         <p class="logo-title">Celesete Music</p>
                     </button>   
@@ -33,7 +34,14 @@
                         <li><a href="{% url 'browse' %}">Browse</a></li>
                         <li><a href="{% url 'support' %}">Support</a></li> -->
                         <li><a href="{% url 'upload' %}"><img class="logo" src="{% static 'music/upload.png' %}"></a></li>
-                        <li><a href="{% url 'login' %}">Log In</a></li>
+                        <!-- {% for profile in profiles %}
+                            {% if profile.user == request.user %}
+                                <li><a href="{% url 'login' %}"><img class="logo" src="{{ profile.profilepic.url }}" alt="profilepic"></a></li>
+                            {% endif %}
+                        {% endfor %}
+                        {% if } -->
+                        
+                        <li><a href="{% url 'profile' %}"><img class="logo" src="{{ profilepic }}"></a></li>
                     </ul>
                 </nav>
             </div>
