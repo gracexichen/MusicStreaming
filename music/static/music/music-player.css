@@ -1,0 +1,116 @@
+.musicplayer{
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 101px;
+  z-index: 200px;
+  display: flex;
+  justify-content: space-between;
+  background-color: black;
+  border-top-color: rgb(223, 95, 239);
+  border-top-style: solid;
+  border-top-width: 1px;
+}
+
+.musicplayer-song-info{
+  width: 250px;
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.musicplayer-album-cover{
+  width: 80px;
+  margin-top: 10px;
+  margin-left: 15px;
+  margin-bottom: 10px;
+  border-style: solid;
+  border-color: rgb(223, 95, 239);
+  border-width: 2px;
+}
+
+.musicplayer-song-info p{
+  font-family: Roboto, Arial;
+  margin-left: 20px;
+  margin-top: 5px;
+  color: white;
+  cursor: default;
+}
+
+.musicplayer-song-artists{
+  font-size: 14px;
+}
+
+.musicplayer-control-buttons-container{
+  width: 300px;
+  flex-shrink: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-left: 100px;
+  margin-right: 100px;
+}
+
+.musicplayer-control-buttons,
+.pause-button{
+  cursor: pointer;
+  border: none;
+  background-color: black;
+}
+
+.musicplayer-icons{
+  width: 50px;
+  opacity: .5;
+  transition: opacity 0.15s;
+}
+
+.musicplayer-icons:hover{
+  opacity: 1;
+}
+
+.musicplayer-icons:active{
+  opacity: .5;
+}
+
+
+.pause-icon{
+  width: 60px;
+}
+
+.musicplayer-extra-buttons-container{
+  width: 150px;
+  flex-shrink: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  margin-right: 30px;
+}
+
+.playlist-button,
+.favorite-button{
+  border: none;
+  background-color: black;
+  cursor: pointer;
+}
+
+.add-playlist-icon{
+  width: 42px;
+  opacity: 0.5;
+  transition: opacity 0.15s;
+}
+
+.add-playlist-icon:hover{
+  opacity: 1;
+}
+
+.empty-favorite-icon{
+  width: 42px;
+  opacity: 0.5;
+  transition: opacity 0.15s;
+}
+
+.empty-favorite-icon:hover{
+  opacity: 1;
+}

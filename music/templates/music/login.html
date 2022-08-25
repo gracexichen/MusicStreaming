@@ -1,17 +1,16 @@
 {% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
         <meta charset="UTF-8">
         <title>CELESTE MUSIC</title>
-        <link rel="stylesheet" type="text/css" href="{% static 'music/style.css' %}">
-        <link rel="stylesheet" type="text/css" href="{% static 'music/header.css' %}">
     </head>
     <body>
         <div>
-        <div class="login">
-            <img class="logo" src="{% static 'music/logo.jpg' %}" alt="logo">     
-            <h5 class="text">Celeste Music</h5>
+        <div>
+            <img src="{% static 'music/logo/logo.jpg' %}" alt="logo">     
+            <h5>Celeste Music</h5>
         </div>
 
         {% if message %}
@@ -20,14 +19,16 @@
         
         <form method="POST">
             {% csrf_token %}
-            <div class="form">
-                <h1 class="text">Log In</h1>
+            <div>
+                <h1>Log In</h1>
+                <h3>Username:</h3>
                 <input type="text" name="username" placeholder="Username">
+                <h3>Password:</h3>
                 <input type="password" name="password" placeholder="Password">
-                <input type="submit" value="Login">
+                <input type="submit" value="Log In">
             </div>
         </form>
-        <div class="text">
+        <div>
             <p>Do not have an account?:</p>
             <a href="{% url 'signup' %}">Sign Up</a>
         </div>

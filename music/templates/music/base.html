@@ -5,48 +5,58 @@
     <head>
         <meta charset="UTF-8">
         <title>CELESTE MUSIC</title>
-        <link rel="stylesheet" type="text/css" href="{% static 'music/header.css' %}">
-        <link rel="stylesheet" type="text/css" href="{% static 'music/index.css' %}">
         <link rel="stylesheet" type="text/css" href="{% static 'music/style.css' %}">
+        <link rel="stylesheet" type="text/css" href="{% static 'music/header.css' %}">
+        <link rel="stylesheet" type="text/css" href="{% static 'music/main.css' %}">
+        <link rel="stylesheet" type="text/css" href="{% static 'music/sidebar.css' %}">
+        <link rel="stylesheet" type="text/css" href="{% static 'music/music-player.css' %}">
+        <link rel="stylesheet" type="text/css" href="{% static 'music/homescreen.css' %}">
+        <link rel="stylesheet" type="text/css" href="{% static 'music/login.css' %}">
 
         <!--Satistfy Font-->
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Satisfy&display=swap" rel="stylesheet">
-        
-        <script type="text/javascript" src="{% static 'music/script.js' %}"></script>
+
+        <!--Abril Fatface Font-->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&display=swap" rel="stylesheet">
+
+        <!--Roboto Font-->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     </head>
     <body>
-        <header class="header">
+        <header class="main-header">
             <div class="left-section-header">
-                <a href="{% url 'index' %}">
-                    <button type="button" class="logo-button">
-                        <img class="logo" src="{% static 'music/logo.jpg' %}" alt="logo">
-                        <p class="logo-title">Celesete Music</p>
-                    </button>   
-                </a>
+                <button class="logo-button">
+                    <img class="logo" src="{% static 'music/logo/logo.jpg' %}" alt="logo">
+                    <p class="logo-title">Celesete Music</p>
+                </button>   
+            </div>
+            <div class="middle-section-header">
+                <input class="search-bar" type="text" placeholder="Find Songs?">
             </div>
             <div class="right-section-header">
-                <nav>
-                    <ul class="nav_links">
-                        <!-- <li><a href="{% url 'index' %}">Home</a></li> -->
-                        <!-- <li><a href="{% url 'about' %}">About</a></li>
-                        <li><a href="{% url 'browse' %}">Browse</a></li>
-                        <li><a href="{% url 'support' %}">Support</a></li> -->
-                        <li><a href="{% url 'upload' %}"><img class="logo" src="{% static 'music/upload.png' %}"></a></li>
-                        <!-- {% for profile in profiles %}
-                            {% if profile.user == request.user %}
-                                <li><a href="{% url 'login' %}"><img class="logo" src="{{ profile.profilepic.url }}" alt="profilepic"></a></li>
-                            {% endif %}
-                        {% endfor %}
-                        {% if } -->
-                        
-                        <li><a href="{% url 'profile' %}"><img class="logo" src="{{ profilepic }}"></a></li>
-                    </ul>
-                </nav>
+                <button class="contact-button">
+                    Contact
+                </button>
+                <button class="upload-button">
+                    <a href="{% url 'upload' %}">
+                        <img class="upload-icon" src="{% static 'music/icons/upload.png' %}">
+                    </a>
+                </button>
+                <button class="user-button">
+                    <a href="{% url 'logout' %}">
+                        <img class="user-icon" src="{% static 'music/icons/user.png' %}">
+                    </a>
+                </button>
             </div>
         </header>
         {% block body %} 
         {% endblock %}
+        <script type="text/javascript" src="{% static 'music/script.js' %}"></script>
     </body>
 </html>

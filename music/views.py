@@ -1,7 +1,7 @@
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
 from django.urls import reverse
-from .models import Songs, Profile
+from .models import Songs, Profile, Playlist
 from django.contrib.auth import authenticate,login,logout
 from django.contrib.auth.forms import UserCreationForm
 from .forms import UploadForm, ProfileForm
@@ -10,6 +10,7 @@ from .forms import UploadForm, ProfileForm
 #main webpage
 def index(request):
     songs = Songs.objects.all()
+    playlist = Playlist.objects.all()
     for profile in Profile.objects.all():
         if profile.user == request.user:
             profilepic = profile.profilepic.url
@@ -19,13 +20,8 @@ def index(request):
     return render(request, "music/index.html", {
         "songs": songs,
         "profilepic": profilepic,
+        "playlist": playlist,
     })
-
-def about(request):
-    return render(request, "music/about.html")
-
-def support(request):
-    return render(request, "music/support.html")
 
 def upload(request):
     form = UploadForm()
@@ -41,19 +37,7 @@ def upload(request):
     context = {'form': form}
     return render(request, "music/upload.html",context)
 
-def browse(request):
-    songs = Songs.objects.all()
-    return render(request, "music/browse.html", {
-        "songs": songs,
-    })
-
-
 #authentication
-def home(request):
-    if not request.user.is_authenticated:
-        return HttpResponseRedirect(reverse("login"))
-    return render(request, "music/user.html")
-
 def login_view(request):
     if request.method == "POST":
         username = request.POST["username"]

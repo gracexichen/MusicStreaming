@@ -9,6 +9,20 @@ class Songs(models.Model):
     image = models.ImageField(upload_to="media")
     audio = models.FileField(upload_to="media")
 
+    def __str__(self):
+        return self.title
+
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     profilepic = models.ImageField(upload_to="media")
+
+    def __str__(self):
+        return self.user
+
+class Playlist(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    name = models.CharField(max_length=64)
+    song = models.ManyToManyField(Songs)
+
+    def __str__(self):
+        return self.name

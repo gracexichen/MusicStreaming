@@ -7,9 +7,6 @@
     padding: 0;
 }
 
-body {
-    background-color: rgb(60, 58, 58);
-}
 
 /*text format*/
 .text {
@@ -19,7 +16,7 @@ body {
     text-align: center;
 }
 
-/*about page*/
+/*about page
 h1 {
     padding: 20px 0px;
 }
@@ -56,8 +53,9 @@ hr.solid {
 }
 
 .button1:hover {
-    background-color:rgb(200, 135, 216); /* Green */
+    background-color:rgb(200, 135, 216); Green
 }
+
 
 .browse {
     display: flex;
@@ -66,6 +64,35 @@ hr.solid {
     gap: 30px;
     padding: 20px 0px;
 }
+*/
+/*browse page
+.head {
+    text-align: left;
+}
+
+.row {
+    display: flex;
+    flex-flow: row;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.scroll {
+    display: flex;
+    flex-flow: column;
+    gap: 10px;
+}
+
+.thumbnail {
+    height: 200px;
+    width: 200px;
+}
+
+.genre {
+    text-decoration: underline;
+    padding-bottom: 10px;
+}
+*/
 
 /*login*/
 .form {
