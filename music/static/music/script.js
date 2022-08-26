@@ -9,7 +9,6 @@ function playmusic(name,artist,image,audio) {
     document.getElementById('musicplayer-song-artists').innerHTML = artist;
     document.getElementById('musicplayer-album-cover').src = image;
     document.getElementById('audio').src = audio;
-    console.log("playmusic")
 }
 
 function pauseplay() {
@@ -30,7 +29,6 @@ function popup() {
     document.getElementById('musicplayer-control-buttons-container').style.transform = "translate(0,-150px)"
     document.getElementById('musicplayer-extra-buttons-container').style.transform = "translate(0,-150px)"
     document.getElementById('underneath-footer').style.display = "flex"
-    console.log("popup")
 }
 
 function closePopup() {
@@ -42,12 +40,12 @@ function closePopup() {
 }
 function search(ele) {
     if(event.key === 'Enter') {
-        var title = document.getElementById('song-dropdown').getAttribute('data-title');
-        var artist = document.getElementById('song-dropdown').getAttribute('data-artist');
-        var image = document.getElementById('song-dropdown').getAttribute('data-image');
-        var audio = document.getElementById('song-dropdown').getAttribute('data-audio');
+        var id = document.getElementById('search-song-input').value
+        var title = document.getElementById(id).getAttribute('data-title');
+        var artist = document.getElementById(id).getAttribute('data-artist');
+        var image = document.getElementById(id).getAttribute('data-image');
+        var audio = document.getElementById(id).getAttribute('data-audio');
 
-        alert(ele.value);
         playmusic(title,artist,image,audio);
         popup();
 

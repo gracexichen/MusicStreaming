@@ -39,10 +39,10 @@
                 </button>   
             </div>
             <div class="middle-section-header">
-                <input list="search-songs" class="search-bar" placeholder="Find Songs?" onkeydown="search(this)">
+                <input id="search-song-input" list="search-songs" class="search-bar" placeholder="Find Songs?" onkeydown="search(this)">
                 <datalist id="search-songs" >
                     {% for song in songs %}
-                    <option id="song-dropdown" value="{{ song.title }} by {{ song.artist.username }}" data-title="{{ song.title }}" data-artist="{{ song.artist }}" data-image="{{ song.image.url }}" data-audio="{{ song.audio.url }}"></option>
+                    <option id="{{ song.title }} by {{ song.artist.username }}" value="{{ song.title }} by {{ song.artist.username }}" data-title="{{ song.title }}" data-artist="{{ song.artist }}" data-image="{{ song.image.url }}" data-audio="{{ song.audio.url }}"></option>
                     {% endfor %}
                 </datalist>
             </div>
