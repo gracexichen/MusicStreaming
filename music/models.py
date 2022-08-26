@@ -8,6 +8,7 @@ class Songs(models.Model):
     artist = models.ForeignKey(User, on_delete=models.CASCADE)
     image = models.ImageField(upload_to="media")
     audio = models.FileField(upload_to="media")
+    likes = models.PositiveIntegerField()
 
     def __str__(self):
         return self.title
@@ -17,7 +18,7 @@ class Profile(models.Model):
     profilepic = models.ImageField(upload_to="media")
 
     def __str__(self):
-        return self.user
+        return self.user.username
 
 class Playlist(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)

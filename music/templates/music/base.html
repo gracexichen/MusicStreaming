@@ -27,17 +27,24 @@
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+
+        <script type="text/javascript" src="{% static 'music/script.js' %}"></script>
     </head>
     <body>
         <header class="main-header">
             <div class="left-section-header">
                 <button class="logo-button">
-                    <img class="logo" src="{% static 'music/logo/logo.jpg' %}" alt="logo">
+                    <img class="logo" src="{% static 'music/logo/logo.jpg' %}" title="Log Out" alt="logo">
                     <p class="logo-title">Celesete Music</p>
                 </button>   
             </div>
             <div class="middle-section-header">
-                <input class="search-bar" type="text" placeholder="Find Songs?">
+                <input list="search-songs" class="search-bar" placeholder="Find Songs?" onkeydown="search(this)">
+                <datalist id="search-songs" >
+                    {% for song in songs %}
+                    <option id="song-dropdown" value="{{ song.title }} by {{ song.artist.username }}" data-title="{{ song.title }}" data-artist="{{ song.artist }}" data-image="{{ song.image.url }}" data-audio="{{ song.audio.url }}"></option>
+                    {% endfor %}
+                </datalist>
             </div>
             <div class="right-section-header">
                 <button class="contact-button">
@@ -50,13 +57,12 @@
                 </button>
                 <button class="user-button">
                     <a href="{% url 'logout' %}">
-                        <img class="user-icon" src="{% static 'music/icons/user.png' %}">
+                        <img class="user-icon" src="{{ profilepic }}">
                     </a>
                 </button>
             </div>
         </header>
         {% block body %} 
         {% endblock %}
-        <script type="text/javascript" src="{% static 'music/script.js' %}"></script>
     </body>
 </html>

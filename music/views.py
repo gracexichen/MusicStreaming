@@ -11,14 +11,18 @@ from .forms import UploadForm, ProfileForm
 def index(request):
     songs = Songs.objects.all()
     playlist = Playlist.objects.all()
+    profilepic = "/static/music/icons/user.png"
+    songnames = []
+    for song in Songs.objects.all():
+        songnames.append(song.title + " by " + song.artist.username)
+
     for profile in Profile.objects.all():
         if profile.user == request.user:
             profilepic = profile.profilepic.url
-        else:
-            profilepic = "https://media.istockphoto.com/vectors/default-profile-picture-avatar-photo-placeholder-vector-illustration-vector-id1214428300?b=1&k=20&m=1214428300&s=612x612&w=0&h=y7zBfFswVq5x9XxItbHb6Fd0nqW6rAesklNl42RD0nI="
 
     return render(request, "music/index.html", {
         "songs": songs,
+        "songnames": songnames,
         "profilepic": profilepic,
         "playlist": playlist,
     })

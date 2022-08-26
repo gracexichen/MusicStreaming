@@ -142,10 +142,10 @@
     margin-right: 15px;
     border-style: solid;
     border-color: rgb(223, 95, 239);
-    padding-left: 7px;
-    padding-right: 7px;
-    padding-bottom: 7px;
-    padding-top: 7px;
+    padding-left: 3px;
+    padding-right: 3px;
+    padding-bottom: 3px;
+    padding-top: 3px;
     border-radius: 100px;
     transition: border-color 0.15s;
   }
@@ -155,7 +155,8 @@
   }
 
   .user-icon{
-    width: 30px;
+    width: 35px;
+    border-radius:100px;
   }
   
   /*nav-bar main*/
