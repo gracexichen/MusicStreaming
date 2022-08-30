@@ -1,14 +1,14 @@
-// index page
 window.addEventListener("scroll", function(){
     var header = document.querySelector("header");
     header.classList.toggle("sticky", window.scrollY > 0);
 })
 
-function playmusic(name,artist,image,audio) {
+function playmusic(name,artist,image,audio,id) {
     document.getElementById('musicplayer-song-name').innerHTML = name;
     document.getElementById('musicplayer-song-artists').innerHTML = artist;
     document.getElementById('musicplayer-album-cover').src = image;
     document.getElementById('audio').src = audio;
+    document.getElementById('favorite-button').value = id;
 }
 
 function pauseplay() {
@@ -51,3 +51,22 @@ function search(ele) {
 
     }
 }
+
+$( document ).ready(function() {
+    $("#like-form").on("submit", function(e){
+        var val = $("#favorite-button").val();
+        $.ajax({
+            url: "/index",
+            type: 'POST',
+            data: {
+                csrfmiddlewaretoken: window.CSRF_TOKEN,
+                button_value: val,
+            },
+            success: function(response) {
+                popup();
+                $("#display-likes-count").html("Likes:" + response.likes);
+            }
+        });
+        e.preventDefault();
+    });
+});

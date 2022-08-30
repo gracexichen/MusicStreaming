@@ -1,18 +1,21 @@
-from django.http import HttpResponseRedirect
+from django.http import HttpResponse, HttpResponseRedirect, JsonResponse
 from django.shortcuts import render
 from django.urls import reverse
 from .models import Songs, Profile, Playlist
 from django.contrib.auth import authenticate,login,logout
 from django.contrib.auth.forms import UserCreationForm
 from .forms import UploadForm, ProfileForm
+import json
+
 
 # Create your views here.
 #main webpage
 def index(request):
     songs = Songs.objects.all()
-    playlist = Playlist.objects.all()
+    playlists = Playlist.objects.all()
     profilepic = "/static/music/icons/user.png"
     songnames = []
+
     for song in Songs.objects.all():
         songnames.append(song.title + " by " + song.artist.username)
 
@@ -20,12 +23,22 @@ def index(request):
         if profile.user == request.user:
             profilepic = profile.profilepic.url
 
-    return render(request, "music/index.html", {
-        "songs": songs,
-        "songnames": songnames,
-        "profilepic": profilepic,
-        "playlist": playlist,
-    })
+    if request.headers.get('x-requested-with') == 'XMLHttpRequest' and request.method == "POST":
+        id = request.POST.get('button_value')
+        if id=="":
+            return JsonResponse({{"likes": None}},status=200)
+        object = Songs.objects.get(pk=id)
+        object.likes += 1
+        object.save()
+        numLikes = object.likes
+        return JsonResponse({'likes': numLikes},status=200)
+    else:
+        return render(request, "music/index.html", {
+            "songs": songs,
+            "songnames": songnames,
+            "profilepic": profilepic,
+            "playlists": playlists,
+        })
 
 def upload(request):
     form = UploadForm()
@@ -34,12 +47,43 @@ def upload(request):
         if form.is_valid():
             obj = form.save(commit=False)
             obj.artist = request.user
+            obj.likes = 0
             obj.save()
             return HttpResponseRedirect(reverse("index"))
     else:
         form = UploadForm()
     context = {'form': form}
     return render(request, "music/upload.html",context)
+
+def playlist(request, playlist_name):
+    title = []
+    artist = []
+    image = []
+    audio = []
+    playlists = Playlist.objects.all()
+    playlist = Playlist.objects.get(name=playlist_name)
+    songs = playlist.song.all()
+    for song in songs:
+        title.append(song.title)
+        artist.append(song.artist.username)
+        image.append(song.image.url)
+        audio.append(song.audio.url)
+
+    titlelist = json.dumps(title)
+    artistlist = json.dumps(artist)
+    imagelist = json.dumps(image)
+    audiolist = json.dumps(audio)
+
+    return render(request, "music/playlist.html", {
+        "playlists": playlists,
+        "playlist": playlist,
+        "songs": songs,
+        "title": titlelist,
+        "artist": artistlist,
+        "image":imagelist,
+        "audio": audiolist,
+    })
+
 
 #authentication
 def login_view(request):

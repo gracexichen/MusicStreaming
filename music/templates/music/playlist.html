@@ -1,0 +1,12 @@
+{% extends "music/base.html" %}
+
+{% load static %}
+<!-- Javascript -->
+
+{% block body %}
+<h1>{{ playlist.name }}</h1>
+{% for song in songs %}
+<h4 id="{{ song.title }}">{{ song.title }}</h4>
+{% endfor %}
+
+{% endblock %}
