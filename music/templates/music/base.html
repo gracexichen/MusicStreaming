@@ -124,10 +124,15 @@
             <div class="add-to-playlist" id="add-to-playlist">
               <h3>Add To Playlist</h3>
               {% for list in playlists %}
-              <form method="POST" id="playlist-form">
-                <button id="playlist-button" name="playlist" value="{{ list.name }}">&#43; {{ list.name }}</button>
-              </form>
+                <form method="POST" class="playlist-form" data-playlist="{{ list.name }}">
+                  {% csrf_token %}
+                  <button id="playlist-button" name="playlist" value="{{ list.name }}">&#43; {{ list.name }}</button>
+                </form>
               {% endfor %}
+              <form method="POST" id="add-playlist-form">
+                {% csrf_token %}
+                <input type="text" placeholder="New Playlist Name" name="new-playlist-name" id="input-add-playlist" value="">
+              </form>
             </div>
             <button class="hide-button" id="hide-button" onclick="closePopup()">Hide</button>
           </div>

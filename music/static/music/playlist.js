@@ -29,19 +29,5 @@ function changeSong(direction){
 $(document).ready(function(){
     loadmusic();
     console.log(songNumber);
-
-    // $('#playlist-form').on("submit", function(e){
-    //     var playlistName = $("#playlist-button").val();
-    //     $.ajax({
-    //         url: "/index",
-    //         type: 'POST',
-    //         data: {
-    //             csrfmiddlewaretoken: window.CSRF_TOKEN,
-    //             button_value: playlistName,
-    //         },
-    //         success: function(response) {
-                
-    //         }
-    //     });
-    // })
 })
+

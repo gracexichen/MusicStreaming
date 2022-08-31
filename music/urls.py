@@ -6,7 +6,8 @@ from . import views
 urlpatterns = [
     #main webpage
     path('index', views.index, name='index'),
-    # path('index', views.addtoplaylist, name ='addtoplaylist'),
+    path('addtoplaylist', views.addtoplaylist, name ='addtoplaylist'),
+    path('new_playlist', views.new_playlist, name ='new_playlist'),
     path('upload', views.upload, name="upload"),
     #authentication
     path('', views.login_view, name="login"),

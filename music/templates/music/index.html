@@ -14,9 +14,9 @@
         </a>
         {% endfor %}
       </div>
-      <div class="favorite-container">
+      <!-- <div class="favorite-container">
         <p class="favorite">&#10084; Favorite</p>
-      </div>
+      </div> -->
 
     </div>
     <div class="our-mission-container">
@@ -29,62 +29,6 @@
       </div>
     </div>
   </div>
-
-
-  <!--Music Player-->
-  <!-- <div class="musicplayer" id="musicplayer">
-    <div class="musicplayer-song-info" id="musicplayer-song-info" onclick="popup()">
-      <img class="musicplayer-album-cover" id="musicplayer-album-cover" src="" alt="Click on a song">
-      <div class="musicplayer-song-info-text">
-      <p class="musicplayer-song-name" id="musicplayer-song-name">Song Title</p>
-      <p class="musicplayer-song-artists" id="musicplayer-song-artists">Artist</p>
-      </div>     
-    </div>
-
-    <div class="musicplayer-control-buttons-container" id="musicplayer-control-buttons-container">
-      <button class="musicplayer-control-buttons">
-        <img class="musicplayer-icons" src="{% static 'music/musicplayer-icons/previous.png' %}">
-      </button>
-      <button class="pause-button" id="pause-button" onclick="pauseplay()">
-        <img class="pause-icon" id="pauseplay-image" src="{% static 'music/musicplayer-icons/play.png' %}">
-        <audio id="audio" src=""></audio>
-      </button>
-      <button class="musicplayer-control-buttons">
-        <img class="musicplayer-icons" src="{% static 'music/musicplayer-icons/next-new.png' %}">
-      </button>
-    </div>
-
-    <div class="musicplayer-extra-buttons-container" id="musicplayer-extra-buttons-container">
-      <button class="playlist-button" onclick="popup()">
-        <img class="add-playlist-icon" src="{% static 'music/musicplayer-icons-extra/add-playlist.png' %}">
-      </button>
-
-      <form method="POST" id="like-form">
-        <button class="favorite-button" id="favorite-button" name="favorite" value="">
-          <img class="empty-favorite-icon" id="empty-favorite-icon" src="{% static 'music/musicplayer-icons-extra/empty-favorite.png' %}">
-        </button>
-      </form>
-    </div>
-  </div>
-
-  <div class="underneath-footer" id="underneath-footer">
-    <div class="underneath-description">
-      <h3>Description:</h3>
-      <p>The song is the best song in the world.</p>
-      <h3 id="display-likes-count">Likes:</h3>
-    </div>
-    <div class="input-comment">
-      <h3>Comments:</h3>
-      <input>
-    </div>
-    <div class="add-to-playlist" id="add-to-playlist">
-      <h3>Add To Playlist</h3>
-      {% for list in playlist %}
-      <button id="{{ list.name }}">&#43; {{ list.name }}</button>
-      {% endfor %}
-    </div>
-    <button class="hide-button" id="hide-button" onclick="closePopup()">Hide</button>
-  </div> -->
 
   <div class="full-homescreen">
     <div class="welcome-message">

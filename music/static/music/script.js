@@ -69,4 +69,42 @@ $( document ).ready(function() {
         });
         e.preventDefault();
     });
+
+    $('.playlist-form').on("submit", function(e){
+        var playlistName = $(this).attr("data-playlist");
+        console.log(playlistName);
+        var songName = $("#musicplayer-song-name").html();
+        console.log(songName);
+        var songID = $("#favorite-button").val();
+        console.log(songID);
+        $.ajax({
+            url: "/addtoplaylist",
+            type: 'POST',
+            data: {
+                csrfmiddlewaretoken: window.CSRF_TOKEN,
+                playlist_name: playlistName,
+                song_ID: songID,
+            },
+            success: function(response) {
+                console.log(response.playlistName);
+            }
+        });
+        e.preventDefault();
+    })
+
+    $('#add-playlist-form').on("submit", function(e){
+        var newPlaylist = $("#input-add-playlist").val();
+        console.log(newPlaylist);
+        $.ajax({
+            url: "/new_playlist",
+            type: 'POST',
+            data: {
+                csrfmiddlewaretoken: window.CSRF_TOKEN,
+                new_playlist: newPlaylist,
+            },
+            success: function(r) {
+                pass
+            }
+        });
+    })
 });

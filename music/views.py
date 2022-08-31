@@ -9,10 +9,10 @@ import json
 
 
 # Create your views here.
-#main webpage
+
 def index(request):
     songs = Songs.objects.all()
-    playlists = Playlist.objects.all()
+    playlists = Playlist.objects.filter(user=request.user)
     profilepic = "/static/music/icons/user.png"
     songnames = []
 
@@ -39,6 +39,24 @@ def index(request):
             "profilepic": profilepic,
             "playlists": playlists,
         })
+
+def addtoplaylist(request):
+    if request.headers.get('x-requested-with') == 'XMLHttpRequest' and request.method == "POST":
+        playlist_name = request.POST.get('playlist_name')
+        song_ID = request.POST.get("song_ID")
+        user = request.user
+        playlist = Playlist.objects.get(user=user, name=playlist_name)
+        add_song = Songs.objects.get(pk=song_ID)
+        playlist.song.add(add_song)
+        playlist.save()
+    return JsonResponse({'playlist':playlist_name}, status=200)
+
+def new_playlist(request):
+    if request.headers.get('x-requested-with') == 'XMLHttpRequest' and request.method == "POST":
+        playlist_name = request.POST.get('new_playlist')
+        new = Playlist.objects.create(user=request.user, name=playlist_name)
+        new.save()
+    return JsonResponse({'newPlaylist',playlist_name}, status=200)
 
 def upload(request):
     form = UploadForm()
