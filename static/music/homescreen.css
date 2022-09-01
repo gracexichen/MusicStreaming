@@ -1,0 +1,129 @@
+.full-homescreen{
+  background-color: #0f0f0f;
+  height: 3000px;
+}
+
+.welcome-message{
+  height: 95px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.welcome-message p{
+  font-size: 50px;
+  font-family: 'Satisfy', cursive;
+  color: rgb(223, 95, 239);
+  cursor: default;
+}
+
+.my-songs-title,
+.viral-hits-title{
+  height: 65px;
+}
+
+.my-songs-title p,
+.viral-hits-title p{
+  font-size: 40px;
+  font-family: 'Satisfy', cursive;
+  color: rgb(223, 95, 239);
+  margin-left: 25px;
+  cursor: default;
+}
+
+.my-songs-title p{
+  font-size: 40px;
+}
+
+.my-songs-main-grid,
+.viral-hits-main-grid{
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 100px;
+  column-gap: 15px;
+  row-gap: 20px;
+  margin: 5px 20px 50px 30px;
+  margin-left: 20px;
+  margin-top: 5px;
+}
+
+
+.my-songs-cover,
+.viral-hits-cover{
+  background-color: rgba(55, 55, 51, 0.5);
+  height: 180px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  padding: 15px 5px 15px 15px;
+  border: 1px solid rgb(223, 95, 239);
+  cursor: pointer;
+  color: white;
+  transition: background-color 0.15s, color 0.15s;
+}
+
+.my-songs-cover:hover,
+.viral-hits-cover:hover{
+  background-color: rgba(55, 55, 51, 1);
+  color: rgb(223, 95, 239);
+}
+
+
+.my-song-info,
+.viral-hits-info{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.my-songs-cover img,
+.viral-hits-cover img{
+  width: 150px;
+}
+
+.my-song-name,
+.my-song-artist,
+.viral-hits-name,
+.viral-hits-artist{
+  margin-left: 4px;
+  font-family: Arial;
+}
+
+.my-song-name
+.viral-hits-name{
+  font-size: 18px;
+}
+
+.my-song-artist,
+.viral-hits-artist{
+  font-size: 16px;
+}
+
+
+.more-button-container{
+  width: 100px;
+  z-index: 0;
+}
+
+.more-button{
+  background-color: black;
+}
+
+.more-icon{
+  width: 50px;
+  opacity: .5;
+  transition: opacity 0.15s;
+}
+
+.more-icon:hover{
+  opacity: 1;
+}
+
+.more-icons:active{
+  opacity: .5;
+}
+
+.viral-hits-title p{
+  font-size: 36px;
+}
