@@ -1,7 +1,7 @@
 var songNumber = 0;
 
 function loadmusic() {
-    playmusic(title[songNumber], artist[songNumber], image[songNumber], audio[songNumber],0);
+    playmusic(title[songNumber], artist[songNumber], image[songNumber], audio[songNumber],0, description[songNumber], 0);
     var music = document.getElementById('audio');
     music.addEventListener("ended", function(){changeSong('next');console.log("changed song")});
     console.log("listener fired");
