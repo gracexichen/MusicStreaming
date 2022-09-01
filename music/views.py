@@ -5,7 +5,7 @@ from .models import Songs, Profile, Playlist
 from django.contrib.auth import authenticate,login,logout
 from django.contrib.auth.forms import UserCreationForm
 from .forms import UploadForm, ProfileForm
-import PIL
+import Image
 import json
 
 
