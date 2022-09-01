@@ -9,7 +9,13 @@ import json
 
 
 # Create your views here.
+profilepic = "/static/music/icons/user.png"
 
+def findProfile(request):
+    global profilepic
+    for profile in Profile.objects.all():
+        if profile.user == request.user:
+            profilepic = profile.profilepic.url
 def index(request):
     songs = Songs.objects.all()
     playlists = Playlist.objects.filter(user=request.user)
@@ -40,6 +46,13 @@ def index(request):
             "playlists": playlists,
         })
 
+def contact(request):
+    findProfile(request)
+    
+    return render(request, "music/contact.html", {
+        "profilepic": profilepic,
+    })
+
 def addtoplaylist(request):
     if request.headers.get('x-requested-with') == 'XMLHttpRequest' and request.method == "POST":
         playlist_name = request.POST.get('playlist_name')
@@ -59,6 +72,8 @@ def new_playlist(request):
     return JsonResponse({'newPlaylist',playlist_name}, status=200)
 
 def upload(request):
+    findProfile(request)
+
     form = UploadForm()
     if request.method == "POST":
         form = UploadForm(request.POST, request.FILES)
@@ -70,10 +85,14 @@ def upload(request):
             return HttpResponseRedirect(reverse("index"))
     else:
         form = UploadForm()
-    context = {'form': form}
+    context = {
+        'form': form,
+        "profilepic": profilepic
+        }
     return render(request, "music/upload.html",context)
 
 def playlist(request, playlist_name):
+
     title = []
     artist = []
     image = []
@@ -139,6 +158,8 @@ def signup_view(request):
     return render(request, "music/signup.html",context)
 
 def profile(request):
+    findProfile(request)
+
     form = ProfileForm()
     if request.method == "POST":
         form = ProfileForm(request.POST, request.FILES)
@@ -150,6 +171,7 @@ def profile(request):
     else:
         form = ProfileForm()
     context = {
-        "form": form
+        "form": form,
+        "profilepic": profilepic,
     }
     return render(request, "music/profile.html", context)

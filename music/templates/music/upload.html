@@ -1,6 +1,7 @@
 {% extends "music/base.html" %}
 
 {% block body %}
+<data id = "data" value="upload"></data>
 <h1 class="text">Upload Songs</h1>
 <form enctype="multipart/form-data" method="POST">
     {% csrf_token %}

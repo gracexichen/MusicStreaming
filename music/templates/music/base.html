@@ -60,18 +60,27 @@
             </div>
             <div class="right-section-header">
                 <button class="contact-button">
+                  <a href="{% url 'contact' %}" onclick="hideMusicplayer()">
                     Contact
+                  </a>
                 </button>
                 <button class="upload-button">
                     <a href="{% url 'upload' %}">
                         <img class="upload-icon" src="{% static 'music/icons/upload.png' %}">
                     </a>
                 </button>
-                <button class="user-button">
+                <div class="dropdown" onmouseleave="dropdown('leave')">
+                  <button class="user-button" onmouseover="dropdown('hover')">
                     <a href="{% url 'logout' %}">
                         <img class="user-icon" src="{{ profilepic }}">
                     </a>
-                </button>
+                    <h6 class="username">{{ request.user.username|title }}</h6>
+                  </button>
+                  <div class="dropdown-content" id="dropdown-content">
+                    <a href="{% url 'profile' %}">Profile</a>
+                    <a href="{% url 'logout' %}">Log Out</a>
+                  </div>
+                </div>
             </div>
         </header>
         {% block body %} 

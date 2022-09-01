@@ -9,6 +9,7 @@ urlpatterns = [
     path('addtoplaylist', views.addtoplaylist, name ='addtoplaylist'),
     path('new_playlist', views.new_playlist, name ='new_playlist'),
     path('upload', views.upload, name="upload"),
+    path('contact', views.contact, name="contact"),
     #authentication
     path('', views.login_view, name="login"),
     path('signup', views.signup_view, name="signup"),

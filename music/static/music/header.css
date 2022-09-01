@@ -28,7 +28,7 @@
   }
   
   .right-section-header{
-    width: 260px;
+    width: 300px;
     color: white;
     display: flex;
     align-items: center;
@@ -159,6 +159,37 @@
     border-radius:100px;
   }
   
+  .username{
+    color: white;
+    font-size: 16px;
+    padding: 0px 10px;
+  }
+  .dropdown-content {
+    position: absolute;
+    background-color: black;
+    margin-top:1px;
+    margin-left:1px;
+    display: none;
+    text-align: center;
+  }
+  .dropdown-content a{
+    display:block;
+    cursor:pointer;
+    background-color: black;
+    color: white;
+    /* border-color: rgb(223, 95, 239); */
+    border-style: solid;
+    padding-left: 16px;
+    padding-right: 16px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    font-size: 16px;
+    transition: color 0.25s,
+  }
+
+  .dropdown-content a:hover{
+    border-color: rgb(223, 95, 239);
+  }
   /*nav-bar main*/
   li, a{
     font-family: "Source Sans Pro, sans-serif";
