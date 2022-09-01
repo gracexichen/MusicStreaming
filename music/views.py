@@ -98,28 +98,32 @@ def playlist(request, playlist_name):
     image = []
     audio = []
     playlists = Playlist.objects.all()
-    playlist = Playlist.objects.get(name=playlist_name)
-    songs = playlist.song.all()
-    for song in songs:
-        title.append(song.title)
-        artist.append(song.artist.username)
-        image.append(song.image.url)
-        audio.append(song.audio.url)
+    try:
+        playlist = Playlist.objects.get(name=playlist_name)
 
-    titlelist = json.dumps(title)
-    artistlist = json.dumps(artist)
-    imagelist = json.dumps(image)
-    audiolist = json.dumps(audio)
+        songs = playlist.song.all()
+        for song in songs:
+            title.append(song.title)
+            artist.append(song.artist.username)
+            image.append(song.image.url)
+            audio.append(song.audio.url)
 
-    return render(request, "music/playlist.html", {
-        "playlists": playlists,
-        "playlist": playlist,
-        "songs": songs,
-        "title": titlelist,
-        "artist": artistlist,
-        "image":imagelist,
-        "audio": audiolist,
-    })
+        titlelist = json.dumps(title)
+        artistlist = json.dumps(artist)
+        imagelist = json.dumps(image)
+        audiolist = json.dumps(audio)
+
+        return render(request, "music/playlist.html", {
+            "playlists": playlists,
+            "playlist": playlist,
+            "songs": songs,
+            "title": titlelist,
+            "artist": artistlist,
+            "image":imagelist,
+            "audio": audiolist,
+        })
+    except Playlist.DoesNotExist:
+        return render(request, "music/index.html")
 
 
 #authentication
