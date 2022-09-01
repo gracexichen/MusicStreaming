@@ -7,8 +7,8 @@ class Songs(models.Model):
     title = models.CharField(max_length=64, unique=True)
     artist = models.ForeignKey(User, on_delete=models.CASCADE)
     image = models.ImageField(upload_to="media")
-    audio = models.FileField(upload_to="media")
-    likes = models.PositiveIntegerField()
+    audio = models.FileField(upload_to="media", null=True)
+    likes = models.PositiveIntegerField(null=True)
 
     def __str__(self):
         return self.title
