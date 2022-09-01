@@ -28,9 +28,9 @@ MEDIA_URL = "/media/"
 SECRET_KEY = 'django-insecure-hl&xpy*7+2dteo9)-df#6(jnsdj-#el%k1=1v9rn*yav7qr1=('
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['blackarrows7954.pythonanywhere.com']
 
 
 # Application definition
@@ -122,6 +122,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
 STATIC_URL = 'static/'
+STATIC_ROOT = '/home/blackarrows7954/starmusic/static'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
