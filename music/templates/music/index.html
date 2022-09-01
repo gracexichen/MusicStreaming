@@ -4,85 +4,85 @@
 {% block body %}
 
 <!--Side-Bar-->
-  <div class="sidebar">
-    <div class="playlists-container">
-      <p class="playlists-title">Playlists</p>
-      <div class="all-playlists">
-        {% for list in playlists %}
-        <a href="{% url 'playlist' list.name %}">
-          <p>&#9702; {{ list.name }}</p>
-        </a>
-        {% endfor %}
-      </div>
-      <!-- <div class="favorite-container">
-        <p class="favorite">&#10084; Favorite</p>
-      </div> -->
-
+<div class="sidebar">
+  <div class="playlists-container">
+    <p class="playlists-title">Playlists</p>
+    <div class="all-playlists">
+      {% for list in playlists %}
+      <a href="{% url 'playlist' list.name %}">
+        <p>&#9702; {{ list.name }}</p>
+      </a>
+      {% endfor %}
     </div>
-    <div class="our-mission-container">
-      <div class="our-mission-title">
-        Our Mission
+    <!-- <div class="favorite-container">
+      <p class="favorite">&#10084; Favorite</p>
+    </div> -->
+
+  </div>
+  <div class="our-mission-container">
+    <div class="our-mission-title">
+      Our Mission
+    </div>
+    <div class="our-mission">
+      <p>Browse Seemingly Endless Hits to Listen to!</p>
+      <p>Each and Every Song is Filled with an Explosion of Emotion and it's Own Profound Meanings! There is Relatable Music for Everyone!</p>
+    </div>
+  </div>
+</div>
+
+<div class="full-homescreen">
+  <div class="welcome-message">
+    <p>Welcome, {{ request.user.username|title }}</p>
+  </div>
+  <div class="my-songs-title">
+    <p>My Songs</p>
+  </div>
+  
+  <div class="my-songs-main-grid">
+    {% for song in songs %}
+    {% if song.artist == request.user %}   
+    <div class="my-songs-cover" onclick="playmusic('{{ song.title }}', '{{ song.artist }}', '{{ song.image.url }}', '{{ song.audio.url }}', '{{ song.pk }}', '{{ song.description }}', '{{ song.likes }}')">
+      <img src="{{ song.image.url }}">
+      <div class="my-song-info">
+        <div class="my-song-name">{{ song.title }}</div>
+        <div class="my-song-artist">{{ song.artist }}</div>
       </div>
-      <div class="our-mission">
-        <p>Browse Seemingly Endless Hits to Listen to!</p>
-        <p>Each and Every Song is Filled with an Explosion of Emotion and it's Own Profound Meanings! There is Relatable Music for Everyone!</p>
-      </div>
+    </div>
+    {% endif %}
+    {% endfor %}
+
+    <div class="more-button-container">
+      <button class="more-button">
+        <img class="more-icon" src="{% static 'music/icons/more.png' %}" >
+      </button>
     </div>
   </div>
 
-  <div class="full-homescreen">
-    <div class="welcome-message">
-      <p>Welcome, {{ request.user.username|title }}</p>
-    </div>
-    <div class="my-songs-title">
-      <p>My Songs</p>
-    </div>
-    
-    <div class="my-songs-main-grid">
-      {% for song in songs %}
-      {% if song.artist == request.user %}   
-      <div class="my-songs-cover" onclick="playmusic('{{ song.title }}', '{{ song.artist }}', '{{ song.image.url }}', '{{ song.audio.url }}', '{{ song.pk }}')">
-        <img src="{{ song.image.url }}">
-        <div class="my-song-info">
-          <div class="my-song-name">{{ song.title }}</div>
-          <div class="my-song-artist">{{ song.artist }}</div>
-        </div>
-      </div>
-      {% endif %}
-      {% endfor %}
 
-      <div class="more-button-container">
-        <button class="more-button">
-          <img class="more-icon" src="{% static 'music/icons/more.png' %}" >
-        </button>
-      </div>
-    </div>
-
-
-    <div class="viral-hits-title">
-      <p>Viral Hits</p>
-    </div>
-
-    <div class="viral-hits-main-grid">
-      {% for song in songs %} 
-      <div class="my-songs-cover" onclick="playmusic('{{ song.title }}', '{{ song.artist }}', '{{ song.image.url }}', '{{ song.audio.url }}', '{{ song.pk }}')">
-        <img src="{{ song.image.url }}">
-        <div class="my-song-info">
-          <div class="my-song-name">{{ song.title }}</div>
-          <div class="my-song-artist">{{ song.artist }}</div>
-        </div>
-      </div>
-      {% endfor %}
-
-      <div class="more-button-container">
-        <button class="more-button">
-          <img class="more-icon" src="{% static 'music/icons/more.png' %}">
-        </button>
-      </div>
-    </div>
-
-    <div class="viral-hits-grid"></div>
-    <div class="top-artists-grid"></div>
+  <div class="viral-hits-title">
+    <p>Viral Hits</p>
   </div>
+
+  <div class="viral-hits-main-grid">
+    {% for song in songs %} 
+    <div class="my-songs-cover" onclick="playmusic('{{ song.title }}', '{{ song.artist }}', '{{ song.image.url }}', '{{ song.audio.url }}', '{{ song.pk }}', '{{ song.description }}', '{{ song.likes }}')">
+      <img src="{{ song.image.url }}">
+      <div class="my-song-info">
+        <div class="my-song-name">{{ song.title }}</div>
+        <div class="my-song-artist">{{ song.artist }}</div>
+      </div>
+    </div>
+    {% endfor %}
+
+    <div class="more-button-container">
+      <button class="more-button">
+        <img class="more-icon" src="{% static 'music/icons/more.png' %}">
+      </button>
+    </div>
+  </div>
+
+  <div class="viral-hits-grid"></div>
+  <div class="top-artists-grid"></div>
+</div>
 
 {% endblock %}

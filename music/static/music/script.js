@@ -26,12 +26,14 @@ function search(ele) {
 }
 
 //musicplayer
-function playmusic(name,artist,image,audio,id) {
+function playmusic(name,artist,image,audio,id, description, likes) {
     document.getElementById('musicplayer-song-name').innerHTML = name;
     document.getElementById('musicplayer-song-artists').innerHTML = artist;
     document.getElementById('musicplayer-album-cover').src = image;
     document.getElementById('audio').src = audio;
     document.getElementById('favorite-button').value = id;
+    document.getElementById('song-description').innerHTML = description;
+    document.getElementById('display-likes-count').innerHTML = "Likes: " + likes;
 }
 
 function hideMusicplayer() {

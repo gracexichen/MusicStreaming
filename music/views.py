@@ -5,6 +5,7 @@ from .models import Songs, Profile, Playlist
 from django.contrib.auth import authenticate,login,logout
 from django.contrib.auth.forms import UserCreationForm
 from .forms import UploadForm, ProfileForm
+import PIL
 import json
 
 
@@ -97,6 +98,7 @@ def playlist(request, playlist_name):
     artist = []
     image = []
     audio = []
+    description = []
     playlists = Playlist.objects.all()
     try:
         playlist = Playlist.objects.get(name=playlist_name)
@@ -107,11 +109,13 @@ def playlist(request, playlist_name):
             artist.append(song.artist.username)
             image.append(song.image.url)
             audio.append(song.audio.url)
+            description.append(song.description)
 
         titlelist = json.dumps(title)
         artistlist = json.dumps(artist)
         imagelist = json.dumps(image)
         audiolist = json.dumps(audio)
+        descriptionlist= json.dumps(description)
 
         return render(request, "music/playlist.html", {
             "playlists": playlists,
@@ -121,6 +125,7 @@ def playlist(request, playlist_name):
             "artist": artistlist,
             "image":imagelist,
             "audio": audiolist,
+            "description": descriptionlist,
         })
     except Playlist.DoesNotExist:
         return render(request, "music/index.html")

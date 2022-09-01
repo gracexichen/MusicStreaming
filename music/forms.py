@@ -8,7 +8,7 @@ from .models import Songs, Profile
 class UploadForm(ModelForm):
     class Meta:
         model = Songs
-        fields = ['title', 'image', 'audio']
+        fields = ['title', 'image', 'audio','description']
         
 class ProfileForm(ModelForm, forms.Form):
     profilepic = forms.ImageField()

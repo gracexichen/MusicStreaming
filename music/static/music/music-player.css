@@ -124,37 +124,46 @@
   font-family: Roboto, Arial;
   color: white;
   font-size: 20px;
-  margin-right:5%;
+  margin-right:2%;
   margin-top:25px;
+  flex-grow:1;
+  align-content: right;
+  right:0;
+  position:fixed;
 }
 .underneath-description {
   color:white;
-  margin-left:5%;
+  margin-left:2%;
   margin-top:25px;
+  flex-grow:1;
+  right:50%;
 }
 .input-comment {
   color:white;
   margin-top:25px;
+  right:50%;
+  flex-grow: 1;
 }
 
 .hide-button {
   height:30px;
   position:fixed;
-  right:50%;
   bottom:0;
+  right:50%;
   margin-bottom: 50px;
   opacity: 0;
   transition: all 0.25s;
+  
 }
 .underneath-footer {
   display: hidden;
   position: fixed;
+  width:100%;
   bottom: 0;
   left: 0;
   right: 0;
   height: 0px;
   z-index: 500;
-  justify-content: space-between;
   background-color: black;
   border-top-color: rgb(223, 95, 239);
   border-top-style: solid;
