@@ -29,5 +29,5 @@ function changeSong(direction){
 $(document).ready(function(){
     loadmusic();
     console.log(songNumber);
-})
 
+})

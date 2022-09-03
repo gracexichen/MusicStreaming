@@ -1,4 +1,5 @@
-// navbar
+
+var currentSongID;
 window.addEventListener("scroll", function(){
     var header = document.querySelector("header");
     header.classList.toggle("sticky", window.scrollY > 0);
@@ -27,6 +28,8 @@ function search(ele) {
 
 //musicplayer
 function playmusic(name,artist,image,audio,id, description, likes) {
+    currentSongID= id;
+    document.getElementById('all-comments').innerHTML="";
     document.getElementById('musicplayer-song-name').innerHTML = name;
     document.getElementById('musicplayer-song-artists').innerHTML = artist;
     document.getElementById('musicplayer-album-cover').src = image;
@@ -34,8 +37,33 @@ function playmusic(name,artist,image,audio,id, description, likes) {
     document.getElementById('favorite-button').value = id;
     document.getElementById('song-description').innerHTML = description;
     document.getElementById('display-likes-count').innerHTML = "Likes: " + likes;
-}
 
+    $.ajax({
+        url: "/process_comment",
+        type: 'POST',
+        data: {
+            csrfmiddlewaretoken: window.CSRF_TOKEN,
+            song_id: id,
+        },
+        success: function(response) {
+            var comments_texts = JSON.parse(response.comments_texts);
+            var comments_users = JSON.parse(response.comments_users)
+            console.log(comments_users);
+            console.log(comments_texts);
+            for (let i = 0; i < comments_users.length; i++){
+                var h6 = document.createElement("h6");
+                var p = document.createElement("p")
+                var text = document.createTextNode(comments_users[i]);
+                var person = document.createTextNode(comments_texts[i]);
+                h6.appendChild(text)
+                p.appendChild(person)
+                var parent = document.getElementById("all-comments")
+                parent.appendChild(h6)
+                parent.appendChild(p)
+            }
+        }
+    });
+}
 function hideMusicplayer() {
     document.getElementById('musicplayer').style.display = "none";
 }
@@ -84,7 +112,7 @@ $( document ).ready(function() {
             },
             success: function(response) {
                 popup();
-                $("#display-likes-count").html("Likes:" + response.likes);
+                $("#display-likes-count").html("Likes:" + likes);
             }
         });
         e.preventDefault();
@@ -106,7 +134,7 @@ $( document ).ready(function() {
                 song_ID: songID,
             },
             success: function(response) {
-                console.log(response.playlistName);
+                console.log(playlistName);
             }
         });
         e.preventDefault();
@@ -128,6 +156,23 @@ $( document ).ready(function() {
         });
     })
 
+    $('#comment-form').on("submit", function(e){
+        var commentText = $("#comment-input").val();
+        console.log(commentText);
+        e.preventDefault();
+        $.ajax({
+            url: "/add_comment",
+            type: 'POST',
+            data: {
+                csrfmiddlewaretoken: window.CSRF_TOKEN,
+                "comment_text": commentText,
+                "song_id": currentSongID,
+            },
+            success: function(response) {
+                console.log(response.comment);
+            }
+        });
+    })
     if ($('#data').val() ==="contact" || $('#data').val() ==="upload") {
         hideMusicplayer();
     }

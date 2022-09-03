@@ -10,6 +10,8 @@ urlpatterns = [
     path('new_playlist', views.new_playlist, name ='new_playlist'),
     path('upload', views.upload, name="upload"),
     path('contact', views.contact, name="contact"),
+    path('process_comment', views.process_comment,name='process_comment'),
+    path('add_comment', views.add_comment,name='add_comment'),
     #authentication
     path('', views.login_view, name="login"),
     path('signup', views.signup_view, name="signup"),

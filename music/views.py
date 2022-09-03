@@ -1,7 +1,8 @@
+from turtle import title
 from django.http import HttpResponse, HttpResponseRedirect, JsonResponse
 from django.shortcuts import render
 from django.urls import reverse
-from .models import Songs, Profile, Playlist
+from .models import Songs, Profile, Playlist, Comment
 from django.contrib.auth import authenticate,login,logout
 from django.contrib.auth.forms import UserCreationForm
 from .forms import UploadForm, ProfileForm
@@ -16,6 +17,33 @@ def findProfile(request):
     for profile in Profile.objects.all():
         if profile.user == request.user:
             profilepic = profile.profilepic.url
+
+def process_comment(request):
+    comment_userlist = []
+    comment_textlist = []
+
+    if request.headers.get('x-requested-with') == 'XMLHttpRequest' and request.method == "POST":
+        song_id = request.POST.get('song_id')
+        songComments = Comment.objects.all().filter(song=song_id)
+        for comment in songComments:
+            comment_userlist.append(comment.user.username)
+            comment_textlist.append(comment.text)
+
+        comment_userlist = json.dumps(comment_userlist)
+        comment_textlist = json.dumps(comment_textlist)
+    return JsonResponse({"comments_users": comment_userlist, "comments_texts":comment_textlist},status=200)
+
+def add_comment(request):
+    if request.headers.get('x-requested-with') == 'XMLHttpRequest' and request.method == "POST":
+        song_id = request.POST.get('song_id')
+        comment_text = request.POST.get('comment_text')
+        user = request.user
+        song = Songs.objects.get(pk=song_id)
+        new = Comment.objects.create(user=user, song=song,text=comment_text)
+        new.save()
+    return JsonResponse({'comment':comment_text}, status=200)
+
+
 def index(request):
     songs = Songs.objects.all()
     playlists = Playlist.objects.filter(user=request.user)

@@ -28,3 +28,9 @@ class Playlist(models.Model):
 
     def __str__(self):
         return self.name
+
+class Comment(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    song = models.ForeignKey(Songs, on_delete=models.CASCADE)
+    text = models.TextField(max_length=800)
+    

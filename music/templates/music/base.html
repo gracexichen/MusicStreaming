@@ -56,21 +56,22 @@
                 <input id="search-song-input" list="search-songs" class="search-bar" placeholder="Find Songs?" onkeydown="search(this)">
                 <datalist id="search-songs" >
                     {% for song in songs %}
+                    {{ csrf_token }}
                     <option id="{{ song.title }} by {{ song.artist.username }}" value="{{ song.title }} by {{ song.artist.username }}" data-title="{{ song.title }}" data-artist="{{ song.artist }}" data-image="{{ song.image.url }}" data-audio="{{ song.audio.url }}"></option>
                     {% endfor %}
                 </datalist>
             </div>
             <div class="right-section-header">
-                <button class="contact-button">
-                  <a href="{% url 'contact' %}" onclick="hideMusicplayer()">
+                <a href="{% url 'contact' %}" onclick="hideMusicplayer()">
+                  <button class="contact-button">
                     Contact
-                  </a>
-                </button>
-                <button class="upload-button">
-                    <a href="{% url 'upload' %}">
-                        <img class="upload-icon" src="{% static 'music/icons/upload.png' %}">
-                    </a>
-                </button>
+                  </button>
+                </a>
+                <a href="{% url 'upload' %}">
+                  <button class="upload-button">
+                    <img class="upload-icon" src="{% static 'music/icons/upload.png' %}">
+                  </button>
+                </a>
                 <div class="dropdown" onmouseleave="dropdown('leave')">
                   <button class="user-button" onmouseover="dropdown('hover')">
                     <a href="{% url 'logout' %}">
@@ -128,9 +129,14 @@
               <p id="song-description">None</p>
               <h3 id="display-likes-count"></h3>
             </div>
-            <div class="input-comment">
-              <h3>Comments:</h3>
-              <input>
+            <div class="input-comment" id="input-comment">
+              <div id="all-comments">
+              </div>
+              <form method="POST" id="comment-form">
+                {% csrf_token %}
+                <input name="comment-input" id="comment-input">
+                <button type="submit">Submit Comment</button>
+              </form>
             </div>
             <div class="add-to-playlist" id="add-to-playlist">
               <h3>Add To Playlist</h3>
@@ -142,7 +148,7 @@
               {% endfor %}
               <form method="POST" id="add-playlist-form">
                 {% csrf_token %}
-                <input type="text" placeholder="New Playlist Name" name="new-playlist-name" id="input-add-playlist" value="">
+                <input type="text" placeholder="New Playlist Name" name="new-playlist-name" id="input-add-playlist">
               </form>
             </div>
             <button class="hide-button" id="hide-button" onclick="closePopup()">Hide</button>
