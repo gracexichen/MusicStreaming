@@ -1,12 +1,42 @@
 {% extends "music/base.html" %}
 
 {% block body %}
-<data id = "data" value="upload"></data>
-<h1 class="text">Upload Songs</h1>
-<form enctype="multipart/form-data" method="POST">
-    {% csrf_token %}
-    {{form.errors}}
-    {{ form.as_p }}
-    <input type="submit" value="Upload">
-</form>
+<div class="upload-body">
+    <data id = "data" value="upload"></data>
+    <div class="upload-container">
+        <h1 class="upload-title">Upload Songs</h1>
+    </div>
+    <div class="enclosing-container">
+        <div class="upload-body-inside">
+            <form enctype="multipart/form-data" method="POST" class="upload-form-items">
+                {% csrf_token %}
+                <div class="title-container">
+                    <h2 class="field-title">Title:</h2>
+                    <div class="upload-form-style">
+                        {{ form.title }}
+                    </div>
+                </div>
+                <div class="image-container">
+                    <h2 class="field-title">Image:</h2>
+                    <div class="upload-form-style">
+                        {{ form.image }}
+                    </div>
+                </div>
+                <div class="audio-container">
+                    <h2 class="field-title">Audio:</h2>
+                    <div class="upload-form-style">
+                        {{ form.audio }}
+                    </div>
+                </div>
+                <div class="description-container">
+                    <h2 class="field-title">Description:</h2>
+                    <div class="upload-form-style">
+                        {{ form.description }}
+                    </div>
+                </div>
+                <input type="submit" value="Upload" class="upload-page-button">
+            </form>
+        </div>
+    </div>
+</div>
 {% endblock %}

@@ -66,6 +66,9 @@ function playmusic(name,artist,image,audio,id, description, likes) {
 }
 function hideMusicplayer() {
     document.getElementById('musicplayer').style.display = "none";
+    document.getElementById('musicplayer').style.height = "0";
+    document.getElementById('underneath-footer').style.display = "none";
+    
 }
 function pauseplay() {
     var audio = document.getElementById('audio')
@@ -175,6 +178,7 @@ $( document ).ready(function() {
     })
     if ($('#data').val() ==="contact" || $('#data').val() ==="upload") {
         hideMusicplayer();
+        document.getElementById('underneath-footer').style.display = "none";
     }
 
 });
