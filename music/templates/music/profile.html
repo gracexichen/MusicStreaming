@@ -1,21 +1,49 @@
 {% extends "music/base.html" %}
 
 {% block body %}
-<h1 class="text">Profile</h1>
-<form enctype="multipart/form-data" method="POST">
-    {% csrf_token %}
-    <div>
-        <h3>Username: {{request.user.username|title}}</h3>
+<data id = "data" value="profile"></data>
+<div class="profile-body">
+    <div class="profile-container">
+        <h1 class="profile-title">Profile</h1>
     </div>
-    <br>
-    <br>
-    <div>
-        <h3>Update Profile Picture</h3>
-        <img class="user-icon" src="{{ profilepic }}">
-        <br>
-        {{form.profilepic}}
-        {{form.errors}}
+    <div class="large-container">
+        <form enctype="multipart/form-data" method="POST" class="information-container">
+            {% csrf_token %}
+            <div class="username information-box">
+                <h3 class="information-title">Username:</h3>
+                <h3 class="information">{{request.user.username|title}}</h3>
+            </div>
+            <div class="song information-box">
+                <h3 class="information-title">Songs:</h3>
+                <div class="row-display">
+                    {% for song in songs %}
+                    <p class="information">{{ song.title }}</p>
+                    {% endfor %}
+                </div>
+            </div>
+            <div class="like information-box">
+                <h3 class="information-title">Total Likes:</h3>
+                <p class="information">{{ totalLikes }}</p>
+            </div>
+            <div class="playlist information-box">
+                <h3 class="information-title">Playlists:</h3>
+                <div class="row-display">
+                    {% for playlist in playlists %}
+                    <p class="information">{{ playlist.name }}</p>
+                    {% endfor %}
+                </div>
+            </div>
+            <div class="profile-picture">
+                <img class="user-profilepic" src="{{ profilepic }}">
+            </div>
+            <div class="profile">
+                <h3 class="information-title">Update Profile Picture</h3>
+                <div class="information">
+                    {{form.profilepic}}
+                    <input type="submit" value="Save Profile" class="profile-submit-button">
+                </div>
+            </div>
+        </form>
     </div>
-    <input type="submit" value="Save">
-</form>
+</div>
 {% endblock %}

@@ -196,6 +196,11 @@ def signup_view(request):
 def profile(request):
     findProfile(request)
 
+    songs = Songs.objects.all().filter(artist=request.user)
+    playlists = Playlist.objects.all().filter(user=request.user)
+    totalLikes = 0
+    for song in songs:
+        totalLikes += song.likes
     form = ProfileForm()
     if request.method == "POST":
         form = ProfileForm(request.POST, request.FILES)
@@ -209,5 +214,8 @@ def profile(request):
     context = {
         "form": form,
         "profilepic": profilepic,
+        "songs": songs,
+        "totalLikes": totalLikes,
+        "playlists":playlists,
     }
     return render(request, "music/profile.html", context)

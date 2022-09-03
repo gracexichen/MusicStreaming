@@ -176,7 +176,7 @@ $( document ).ready(function() {
             }
         });
     })
-    if ($('#data').val() ==="contact" || $('#data').val() ==="upload") {
+    if ($('#data').val() ==="contact" || $('#data').val() ==="upload" || $('#data').val() ==="profile"){
         hideMusicplayer();
         document.getElementById('underneath-footer').style.display = "none";
     }

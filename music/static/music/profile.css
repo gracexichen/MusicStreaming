@@ -1,0 +1,132 @@
+.profile-body {
+    padding-top: 70px;
+}
+
+.profile-container {
+    background-color:black;
+    color:white;
+    width:100%;
+    height:100px;
+    border-bottom: rgb(223, 95, 239) 1px solid;
+}
+
+.profile-title{
+    font-family: 'Satisfy', cursive;
+    color: rgb(223, 95, 239);
+    font-size: 50px;
+    padding-top: 15px;
+    text-align: center;
+}
+
+.large-container {
+    background-color: rgb(49, 49, 49);
+    padding: 50px 400px;
+    height: auto;
+}
+
+.information-container {
+    display: grid;
+    height:70vh;
+    grid-template-columns: 1.3fr 0.7fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr;
+    grid-template-areas:
+    "user profilepic"
+    "song profilepic"
+    "playlist profile"
+    "like profile2"
+    ;
+    background-color: black;
+    border: solid 3px  rgb(223, 95, 239);
+}
+
+.username{
+    grid-area:user;
+}
+
+.song{
+    grid-area:song;
+}
+
+.like{
+    grid-area: like;
+}
+
+.playlist{
+    grid-area: playlist;
+}
+.profile-picture {
+    grid-area: profilepic;
+}
+.profile{
+    grid-area: profile;
+    border: solid 2px  white;
+    margin-right: 75px;
+    background-color: rgb(49, 49, 49);
+    border-radius: 10px;
+}
+
+.information-title {
+    color:rgb(223, 95, 239);
+    font-family: 'Satisfy', cursive;
+    font-size: 30px;
+    font-stretch: expanded;
+    text-align: center;
+}
+
+.information {
+    color: white;
+    font-family: "Source Sans Pro, sans-serif";
+    font-size: 27px;
+    margin: auto 0;
+    text-align: center;
+}
+
+.user-profilepic {
+    border: rgb(223, 95, 239) 2px solid;
+    height: 250px;
+    width: 250px;
+    margin-top: 20px;
+}
+
+.information-box {
+    border: white 2px solid;
+    margin: 20px 75px;
+    overflow:auto;
+    background-color: rgb(49, 49, 49);
+    border-radius: 10px;
+}
+
+.row-display {
+    display: flex;
+    flex-direction: row;
+    gap:20px;
+    justify-content:left;
+    flex-wrap:wrap;
+    margin:0 10px;
+}
+
+.profile-submit-button{
+    width: 100px;
+    height: 30px;
+    align-self:center;
+    box-sizing: border-box;
+    border:rgb(223, 95, 239) 1px solid;
+    background-color:  rgb(49, 49, 49);
+    color: white;
+    font-family: 'Satisfy', cursive;
+    font-weight:lighter;
+    font-size: 20px;
+    margin-bottom: 5px;
+}
+.profile-submit-button:hover{
+    border-color: white;
+    color: rgb(223, 95, 239);
+    transition:all 0.25s;
+    background-color: rgb(75, 75, 75);
+}
+
+.profile input{
+    text-align-last: center;
+    text-align: center;
+    padding-bottom: 10px;
+}
