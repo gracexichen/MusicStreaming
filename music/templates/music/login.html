@@ -4,33 +4,39 @@
 <html lang="en">
     <head>
         <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>CELESTE MUSIC</title>
+        <link rel="stylesheet" type="text/css" href="{% static 'music/login.css' %}">
+
+        <!--Satistfy Font-->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Satisfy&display=swap" rel="stylesheet">
     </head>
     <body>
-        <div>
-        <div>
-            <img src="{% static 'music/logo/logo.jpg' %}" alt="logo">     
-            <h5>Celeste Music</h5>
-        </div>
-
-        {% if message %}
-            <div>{{ message }}</div>
-        {% endif %}
-        
-        <form method="POST">
-            {% csrf_token %}
-            <div>
-                <h1>Log In</h1>
-                <h3>Username:</h3>
-                <input type="text" name="username" placeholder="Username">
-                <h3>Password:</h3>
-                <input type="password" name="password" placeholder="Password">
-                <input type="submit" value="Log In">
+        <div class="main-body">
+            <div class="left-login">
+                <svg height="609" width="526">
+                    <polygon class="triangle" points="0,0 0,609 526,609"/>
+                    <image class="logo-picture" href="{% static 'music/logo/logo.jpg' %}" alt="logo" height="100" width="100" x="175" y="50"></image>     
+                    <text x="300" y="100" fill="rgb(223, 95, 239)" class="logo-title">Celeste Music</text>
+                </svg>
             </div>
-        </form>
-        <div>
-            <p>Do not have an account?:</p>
-            <a href="{% url 'signup' %}">Sign Up</a>
+            <div class="right-login">
+                <form method="POST" class="login-form-style login-form-items">
+                    {% csrf_token %}
+                    <h1 class="login-title">Log In</h1>
+                    <h3 class="field-title">Username:</h3>
+                    <input type="text" name="username">
+                    <h3 class="field-title">Password:</h3>
+                    <input type="password" name="password">
+                    <input class="login-button"type="submit" value="Log In">
+                </form>
+                <div class="signup-link">
+                    <p>Do not have an account?:</p>
+                    <a href="{% url 'signup' %}">Sign Up</a>
+                </div>
+            </div>
         </div>
     </body>
 </html>

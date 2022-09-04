@@ -31,6 +31,7 @@
     margin:0 auto center;
     text-align: center;
 }
+
 .upload-form-style input{
     background-color: rgb(49, 49, 49);
     font-size: 16px;
@@ -84,6 +85,7 @@
     font-size: 30px;
     font-stretch: expanded;
     text-align: center;
+    margin:0;
 }
 .upload-page-button{
     width: 100px;

@@ -1,4 +1,49 @@
 {% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>CELESTE MUSIC</title>
+        <link rel="stylesheet" type="text/css" href="{% static 'music/signup.css' %}">
+
+        <!--Satistfy Font-->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Satisfy&display=swap" rel="stylesheet">
+    </head>
+    <body>
+        <div class="main-body">
+            <div class="left-signup">
+                <svg height="609" width="526">
+                    <polygon class="triangle" points="0,0 0,609 526,609"/>
+                    <image class="logo-picture" href="{% static 'music/logo/logo.jpg' %}" alt="logo" height="100" width="100" x="175" y="50"></image>     
+                    <text x="300" y="100" fill="rgb(223, 95, 239)" class="logo-title">Celeste Music</text>
+                </svg>
+            </div>
+            <div class="right-signup">
+                <form method="POST" class="signup-form-style signup-form-items">
+                    {% csrf_token %}
+                    <h1 class="signup-title">Sign Up</h1>
+                    <h2 class="field-title">Username:</h2>
+                    {{form.username}}
+                    <h2 class="field-title">Password:</h2>
+                    {{form.password1}}
+                    <h2 class="field-title">Confirm Password:</h2>
+                    {{form.password2}}
+                    <input class="signup-button" type="submit" value="Log In">
+                </form>
+                <div class="signup-link">
+                    <p>Already have an account?:</p>
+                    <a href="{% url 'login' %}">Log In</a>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
+
+<!-- {% load static %}
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -37,7 +82,7 @@
         </form>
         <div>
             <p>Have an account?</p>
-            <a href="{% url 'login' %}">Log In</a>
+            <a href="{% url 'signup' %}">Log In</a>
         </div>
     </body>
-</html>
+</html> -->
