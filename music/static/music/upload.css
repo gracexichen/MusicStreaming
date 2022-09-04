@@ -1,7 +1,3 @@
-.upload-body{
-    padding-top:70px;
-}
-
 .upload-container{
     background-color:black;
     color:white;
@@ -85,7 +81,6 @@
     font-size: 30px;
     font-stretch: expanded;
     text-align: center;
-    margin:0;
 }
 .upload-page-button{
     width: 100px;
