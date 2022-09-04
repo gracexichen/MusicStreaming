@@ -115,7 +115,7 @@ $( document ).ready(function() {
             },
             success: function(response) {
                 popup();
-                $("#display-likes-count").html("Likes:" + likes);
+                $("#display-likes-count").html("Likes:" + response.likes);
             }
         });
         e.preventDefault();

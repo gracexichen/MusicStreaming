@@ -1,4 +1,3 @@
-from turtle import title
 from django.http import HttpResponse, HttpResponseRedirect, JsonResponse
 from django.shortcuts import render
 from django.urls import reverse
@@ -208,7 +207,7 @@ def profile(request):
             obj = form.save(commit=False)
             obj.user = request.user
             obj.save()
-            HttpResponseRedirect(reverse('index'))
+            HttpResponseRedirect(reverse('profile'))
     else:
         form = ProfileForm()
     context = {
