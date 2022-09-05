@@ -133,17 +133,20 @@
   color:rgb(223, 95, 239);
   font-family: 'Satisfy', cursive;
   font-size: 25px;
+  text-align: center;
 }
 
 .add-to-playlist h3{
   color:rgb(223, 95, 239);
   font-family: 'Satisfy', cursive;
   font-size: 25px;
+  margin-top: 10px; 
 }
 
 .add-playlist{
-  grid-area: add;
   margin-left:20px;
+  text-align: center;
+  margin-bottom: 0;
 }
 .underneath-description {
   color:white;

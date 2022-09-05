@@ -25,7 +25,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-bottom: 50px;
+  margin-bottom: 40px;
 }
 .playlists-title{
   color: rgb(223, 95, 239);
@@ -72,12 +72,12 @@
 }
 
 .our-mission-container{
-  height: 400px;
+  height: 350px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding-bottom: 200px;
+  padding-bottom: 30px;
 }
 
 .our-mission-title{

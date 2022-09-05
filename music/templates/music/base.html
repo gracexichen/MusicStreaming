@@ -60,12 +60,13 @@
               </a>
             </div>
             <div class="middle-section-header">
-                <input id="search-song-input" list="search-songs" class="search-bar" placeholder="Find Songs?" onkeydown="search(this)">
+                <input id="search-song-input" list="search-songs" class="search-bar" placeholder="Find Songs?" onkeydown="search()">
                 <datalist id="search-songs" >
                     {% for song in songs %}
                     <option id="{{ song.title }} by {{ song.artist.username }}" value="{{ song.title }} by {{ song.artist.username }}" data-title="{{ song.title }}" data-artist="{{ song.artist }}" data-image="{{ song.image.url }}" data-audio="{{ song.audio.url }}" data-songid="{{ song.id }}" data-description="{{ song.description }}" data-likes="{{ song.likes }}"></optio>
                     {% endfor %}
                 </datalist>
+                <button class="search-button" type="submit" onclick="search()">Search</button>
             </div>
             <div class="right-section-header">
                 <a href="{% url 'contact' %}" onclick="hideMusicplayer()">
@@ -132,14 +133,15 @@
           <div class="underneath-footer" id="underneath-footer">
             <div class="underneath-description">
               <h3>Description:</h3>
-              <p id="song-description">None</p>
+              <p id="song-description">Click on a song!</p>
             </div>
             <div class="likes">
-              <h3 id="display-likes-count"></h3>
+              <h3 id="display-likes-count">&#9825; NA</h3>
             </div>
             <div class="display-comments">
               <h3>Comments:</h3>
               <div id="all-comments" class="all-comments">
+                Click on a song!
               </div>
             </div>
             <div class="input-comment" id="input-comment">
@@ -159,14 +161,7 @@
                 </form>
               {% endfor %}
             </div>
-            <div class="add-playlist">
-              <form method="POST" id="add-playlist-form">
-                {% csrf_token %}
-                <h3 class="add-playlist-title">Add New Playlist</h3>
-                <input type="text" placeholder="New Playlist Name" name="new-playlist-name" id="input-add-playlist">
-                <button type="submit">Add New Playlist</button>
-              </form>
-            </div>
+
           </div>
     </body>
 </html>

@@ -14,7 +14,14 @@
       </a>
       {% endfor %}
     </div>
-
+  </div>
+  <div class="add-playlist">
+    <form method="POST" id="add-playlist-form">
+      {% csrf_token %}
+      <h3 class="add-playlist-title">Add New Playlist</h3>
+      <input type="text" placeholder="New Playlist Name" name="new-playlist-name" id="input-add-playlist">
+      <button type="submit">Add New Playlist</button>
+    </form>
   </div>
   <div class="our-mission-container">
     <div class="our-mission-title">
