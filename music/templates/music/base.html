@@ -16,6 +16,8 @@
         <link rel="stylesheet" type="text/css" href="{% static 'music/music-player.css' %}">
         <link rel="stylesheet" type="text/css" href="{% static 'music/homescreen.css' %}">
         <link rel="stylesheet" type="text/css" href="{% static 'music/profile.css' %}">
+        <link rel="stylesheet" type="text/css" href="{% static 'music/playlist.css' %}">
+
 
         <!--Satistfy Font-->
         <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -42,6 +44,7 @@
           var artist = {{ artist|safe }};
           var image = {{ image|safe }};
           var audio = {{ audio|safe }};
+          var description = {{ description|safe }};
         </script>
         <script type="text/javascript" src="{% static 'music/playlist.js' %}"></script>
     </head>
@@ -60,7 +63,7 @@
                 <datalist id="search-songs" >
                     {% for song in songs %}
                     {{ csrf_token }}
-                    <option id="{{ song.title }} by {{ song.artist.username }}" value="{{ song.title }} by {{ song.artist.username }}" data-title="{{ song.title }}" data-artist="{{ song.artist }}" data-image="{{ song.image.url }}" data-audio="{{ song.audio.url }}"></option>
+                    <option id="{{ song.title }} by {{ song.artist.username }}" value="{{ song.title }} by {{ song.artist.username }}" data-title="{{ song.title }}" data-artist="{{ song.artist }}" data-image="{{ song.image.url }}" data-audio="{{ song.audio.url }}" data-id="{{ song.id }}" data-description="{{ song.description }}" data-likes="{{ song.likes }}"></optio>
                     {% endfor %}
                 </datalist>
             </div>
@@ -130,15 +133,21 @@
             <div class="underneath-description">
               <h3>Description:</h3>
               <p id="song-description">None</p>
+            </div>
+            <div class="likes">
               <h3 id="display-likes-count"></h3>
             </div>
-            <div class="input-comment" id="input-comment">
-              <div id="all-comments">
+            <div class="display-comments">
+              <h3>Comments:</h3>
+              <div id="all-comments" class="all-comments">
               </div>
-              <form method="POST" id="comment-form">
+            </div>
+            <div class="input-comment" id="input-comment">
+              <form method="POST" id="comment-form" class="comment-form">
                 {% csrf_token %}
-                <input name="comment-input" id="comment-input">
-                <button type="submit">Submit Comment</button>
+                <input name="comment-input" id="comment-input" class="comment-input">
+                <button type="submit" class="submit-comment">Submit Comment</button>
+                <button class="hide-button" id="hide-button" onclick="closePopup()">Hide</button>
               </form>
             </div>
             <div class="add-to-playlist" id="add-to-playlist">
@@ -149,12 +158,15 @@
                   <button id="playlist-button" name="playlist" value="{{ list.name }}">&#43; {{ list.name }}</button>
                 </form>
               {% endfor %}
+            </div>
+            <div class="add-playlist">
               <form method="POST" id="add-playlist-form">
                 {% csrf_token %}
+                <h3 class="add-playlist-title">Add New Playlist</h3>
                 <input type="text" placeholder="New Playlist Name" name="new-playlist-name" id="input-add-playlist">
+                <button type="submit">Add New Playlist</button>
               </form>
             </div>
-            <button class="hide-button" id="hide-button" onclick="closePopup()">Hide</button>
           </div>
     </body>
 </html>

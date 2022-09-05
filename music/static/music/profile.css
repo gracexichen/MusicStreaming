@@ -6,27 +6,27 @@
     background-color:black;
     color:white;
     width:100%;
-    height:100px;
+    height:90px;
     border-bottom: rgb(223, 95, 239) 1px solid;
 }
 
 .profile-title{
     font-family: 'Satisfy', cursive;
     color: rgb(223, 95, 239);
-    font-size: 50px;
+    font-size: 40px;
     padding-top: 15px;
     text-align: center;
 }
 
 .large-container {
     background-color: rgb(49, 49, 49);
-    padding: 50px 400px;
+    padding: 53px 350px;
     height: auto;
 }
 
 .information-container {
     display: grid;
-    height:70vh;
+    height:67vh;
     grid-template-columns: 1.3fr 0.7fr;
     grid-template-rows: 1fr 1fr 1fr 1fr;
     grid-template-areas:
@@ -63,12 +63,13 @@
     margin-right: 75px;
     background-color: rgb(49, 49, 49);
     border-radius: 10px;
+    margin-top:10px;
 }
 
 .information-title {
     color:rgb(223, 95, 239);
     font-family: 'Satisfy', cursive;
-    font-size: 30px;
+    font-size: 27px;
     font-stretch: expanded;
     text-align: center;
 }
@@ -76,7 +77,7 @@
 .information {
     color: white;
     font-family: "Source Sans Pro, sans-serif";
-    font-size: 27px;
+    font-size: 24px;
     margin: auto 0;
     text-align: center;
 }

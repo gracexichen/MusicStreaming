@@ -124,40 +124,121 @@
   font-family: Roboto, Arial;
   color: white;
   font-size: 20px;
-  margin-right:2%;
-  margin-top:25px;
-  flex-grow:1;
-  align-content: right;
-  right:0;
-  position:fixed;
+  grid-area:add-to;
+  margin-left:20px;
+  overflow:auto;
+}
+
+.add-playlist-title{
+  color:rgb(223, 95, 239);
+  font-family: 'Satisfy', cursive;
+  font-size: 25px;
+}
+
+.add-to-playlist h3{
+  color:rgb(223, 95, 239);
+  font-family: 'Satisfy', cursive;
+  font-size: 25px;
+}
+
+.add-playlist{
+  grid-area: add;
+  margin-left:20px;
 }
 .underneath-description {
   color:white;
-  margin-left:2%;
-  margin-top:25px;
-  flex-grow:1;
-  max-width: 45%;
-}
-.input-comment {
-  color:white;
-  margin-top:25px;
-  right:50%;
-  flex-grow: 1;
+  grid-area: description;
+  margin-left:20px;
 }
 
+.underneath-description h3{
+  color:rgb(223, 95, 239);
+  font-family: 'Satisfy', cursive;
+  font-size: 25px;
+}
+
+.underneath-description p{
+  font-family: Roboto, Arial;
+}
+
+.input-comment {
+  color:white;
+  grid-area:input;
+  margin-left:20px;
+}
+.comment-form{
+  display:flex;
+  flex-direction: column;
+}
+.submit-comment{
+  margin-top: 5px;
+  width: 150px;
+  align-self: center;
+}
+.comment-input{
+  border:rgb(223, 95, 239) 1px solid;
+  height:50px;
+  align-self: center;
+  width:400px;
+}
+.display-comments{
+  grid-area: display;
+  margin-left:20px;
+}
+.display-comments h3{
+  color:rgb(223, 95, 239);
+  font-family: 'Satisfy', cursive;
+  font-size: 25px;
+}
+
+.all-comments{
+  color:white;
+  font-family: Roboto, Arial;
+  height:150px;
+  overflow: auto;
+}
+
+.all-comments div h6{
+  font-size: 10px;
+}
+
+.all-comments div p{
+  font-size: 25px;
+}
+
+.all-comments div{
+  border:rgb(223, 95, 239) solid 1px;
+  margin-top:5px;
+}
+
+.likes {
+  grid-area:likes;
+  color:rgb(223, 95, 239);
+  margin:auto 0;
+  margin-left:20px;
+}
+.likes h3{
+  font-family: 'Satisfy', cursive;
+  font-size: 60px;
+}
 .hide-button {
-  height:30px;
-  position:fixed;
-  bottom:0;
-  right:50%;
-  margin-bottom: 50px;
   opacity: 0;
   transition: all 0.25s;
-  
+  width:150px;
+  margin:auto 0;
+  margin-top:8px;
+  align-self: center;
 }
 .underneath-footer {
   display: hidden;
   position: fixed;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
+  grid-template-areas:
+  "likes display add-to"
+  "description display add-to"
+  "description input add"
+  ;
   width:100%;
   bottom: 0;
   left: 0;

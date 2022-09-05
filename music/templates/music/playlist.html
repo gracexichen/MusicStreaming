@@ -1,12 +1,19 @@
 {% extends "music/base.html" %}
 
 {% load static %}
-<!-- Javascript -->
 
 {% block body %}
-<h1>{{ playlist.name }}</h1>
-{% for song in songs %}
-<h4 id="{{ song.title }}">{{ song.title }}</h4>
-{% endfor %}
+<div class="playlist-body">
+    <h1 class="playlist-title">{{ playlist.name }}</h1>
+    <div class="container-all-songs">
+        {% for song in songs %}
+        <div class="song-container">
+            <img src="{{ song.image.url }}" class="playlist-song-image">
+            <h4 class="playlist-song-title"id="{{ song.title }}">{{ song.title }}</h4>
+            <h4 class="playlist-song-artist">{{ song.artist }}</h4>
+        </div>
+        {% endfor %}
+    </div>
+</div>
 
 {% endblock %}

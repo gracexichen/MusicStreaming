@@ -1,0 +1,53 @@
+.playlist-body{
+    padding-top: 70px;
+    background-color: rgb(50, 50, 50);
+    height:88vh;
+}
+
+.playlist-title{
+    font-family: 'Satisfy', cursive;
+    color: rgb(223, 95, 239);
+    font-size: 50px;
+    padding-top: 15px;
+    text-align: center;
+    border-bottom:rgb(223, 95, 239) 1px solid;
+    margin-bottom: 15px;
+    background-color: black;
+}
+
+.container-all-songs{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap:10px;
+}
+.song-container{
+    display:flex;
+    flex-direction: row;
+    gap:30px;
+    margin-bottom: 20px;
+    border: white solid 2px;
+    width: 500px;
+    padding:5px 5px;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.playlist-song-image{
+    height: 100px;
+    width: 100px;
+    border:rgb(223, 95, 239) 1px solid;
+}
+
+.playlist-song-title{
+    font-family: 'Satisfy', cursive;
+    color: rgb(223, 95, 239);
+    font-size: 35px;
+}
+
+.playlist-song-artist{
+    font-family: 'Satisfy', cursive;
+    color: rgb(223, 95, 239);
+    font-size: 25px;
+
+}

@@ -45,6 +45,7 @@ def add_comment(request):
 
 def index(request):
     songs = Songs.objects.all()
+
     playlists = Playlist.objects.filter(user=request.user)
     profilepic = "/static/music/icons/user.png"
     songnames = []
@@ -119,7 +120,7 @@ def upload(request):
     return render(request, "music/upload.html",context)
 
 def playlist(request, playlist_name):
-
+    findProfile(request)
     title = []
     artist = []
     image = []
@@ -128,33 +129,33 @@ def playlist(request, playlist_name):
     playlists = Playlist.objects.all()
     try:
         playlist = Playlist.objects.get(name=playlist_name)
-
-        songs = playlist.song.all()
-        for song in songs:
-            title.append(song.title)
-            artist.append(song.artist.username)
-            image.append(song.image.url)
-            audio.append(song.audio.url)
-            description.append(song.description)
-
-        titlelist = json.dumps(title)
-        artistlist = json.dumps(artist)
-        imagelist = json.dumps(image)
-        audiolist = json.dumps(audio)
-        descriptionlist= json.dumps(description)
-
-        return render(request, "music/playlist.html", {
-            "playlists": playlists,
-            "playlist": playlist,
-            "songs": songs,
-            "title": titlelist,
-            "artist": artistlist,
-            "image":imagelist,
-            "audio": audiolist,
-            "description": descriptionlist,
-        })
     except Playlist.DoesNotExist:
         return render(request, "music/index.html")
+    songs = playlist.song.all()
+    for song in songs:
+        title.append(song.title)
+        artist.append(song.artist.username)
+        image.append(song.image.url)
+        audio.append(song.audio.url)
+        description.append(song.description)
+
+    titlelist = json.dumps(title)
+    artistlist = json.dumps(artist)
+    imagelist = json.dumps(image)
+    audiolist = json.dumps(audio)
+    descriptionlist= json.dumps(description)
+
+    return render(request, "music/playlist.html", {
+        "playlists": playlists,
+        "playlist": playlist,
+        "songs": songs,
+        "title": titlelist,
+        "artist": artistlist,
+        "image":imagelist,
+        "audio": audiolist,
+        "description": descriptionlist,
+        "profilepic": profilepic,
+    })
 
 
 #authentication
