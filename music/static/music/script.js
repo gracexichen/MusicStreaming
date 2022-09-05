@@ -15,16 +15,16 @@ function dropdown(input) {
 }
 function search(ele) {
     if(event.key === 'Enter') {
-        var id = document.getElementById('search-song-input').value();
+        var id = document.getElementById('search-song-input').value;
         var title = document.getElementById(id).getAttribute('data-title');
         var artist = document.getElementById(id).getAttribute('data-artist');
         var image = document.getElementById(id).getAttribute('data-image');
         var audio = document.getElementById(id).getAttribute('data-audio');
-        var id = document.getElementById(id).getAttribute('data-id');
+        var songID = document.getElementById(id).getAttribute('data-songid');
         var description = document.getElementById(id).getAttribute('data-description');
         var likes = document.getElementById(id).getAttribute('data-likes');
 
-        playmusic(title,artist,image,audio,id,description,likes);
+        playmusic(title,artist,image,audio,songID,description,likes);
         popup();
     }
 }

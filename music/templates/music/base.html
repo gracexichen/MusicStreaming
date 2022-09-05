@@ -62,8 +62,7 @@
                 <input id="search-song-input" list="search-songs" class="search-bar" placeholder="Find Songs?" onkeydown="search(this)">
                 <datalist id="search-songs" >
                     {% for song in songs %}
-                    {{ csrf_token }}
-                    <option id="{{ song.title }} by {{ song.artist.username }}" value="{{ song.title }} by {{ song.artist.username }}" data-title="{{ song.title }}" data-artist="{{ song.artist }}" data-image="{{ song.image.url }}" data-audio="{{ song.audio.url }}" data-id="{{ song.id }}" data-description="{{ song.description }}" data-likes="{{ song.likes }}"></optio>
+                    <option id="{{ song.title }} by {{ song.artist.username }}" value="{{ song.title }} by {{ song.artist.username }}" data-title="{{ song.title }}" data-artist="{{ song.artist }}" data-image="{{ song.image.url }}" data-audio="{{ song.audio.url }}" data-songid="{{ song.id }}" data-description="{{ song.description }}" data-likes="{{ song.likes }}"></optio>
                     {% endfor %}
                 </datalist>
             </div>
