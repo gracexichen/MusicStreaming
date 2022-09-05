@@ -1,7 +1,7 @@
 .playlist-body{
     padding-top: 70px;
     background-color: rgb(50, 50, 50);
-    height:88vh;
+    height:100vh;
 }
 
 .playlist-title{
@@ -13,6 +13,7 @@
     border-bottom:rgb(223, 95, 239) 1px solid;
     margin-bottom: 15px;
     background-color: black;
+    cursor: default;
 }
 
 .container-all-songs{
@@ -25,13 +26,15 @@
     display:flex;
     flex-direction: row;
     gap:30px;
-    margin-bottom: 20px;
-    border: white solid 2px;
+    margin: 0px 10px 20px 10px;
+    border: rgb(223, 95, 239) solid 2px;
     width: 500px;
-    padding:5px 5px;
+    padding:10px 5px 10px 5px;
     align-items: center;
-    justify-content: space-evenly;
+    justify-content: space-around;
+    background-color: black;
 }
+
 
 .playlist-song-image{
     height: 100px;
@@ -43,11 +46,12 @@
     font-family: 'Satisfy', cursive;
     color: rgb(223, 95, 239);
     font-size: 35px;
+    cursor: default;
 }
 
 .playlist-song-artist{
     font-family: 'Satisfy', cursive;
     color: rgb(223, 95, 239);
     font-size: 25px;
-
+    cursor: default;
 }
