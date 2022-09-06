@@ -8,6 +8,7 @@ body{
 }
 .main-body{
     background-color: white;
+    color:white;
     height:calc(100vh - 200px);
     margin: 100px 230px;
     display: grid;

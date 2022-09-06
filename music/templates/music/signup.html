@@ -39,50 +39,7 @@
                     <a href="{% url 'login' %}">Log In</a>
                 </div>
             </div>
+            <p class="signup-errors">{{form.errors}}</p>
         </div>
     </body>
 </html>
-
-<!-- {% load static %}
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <title>CELESTE MUSIC</title>
-    </head>
-    <body>
-        <div>
-        <div">
-            <img src="{% static 'music/logo/logo.jpg' %}" alt="logo">     
-            <h5>Celeste Music</h5>
-        </div>
-
-        {% if message %}
-            <div>{{ message }}</div>
-        {% endif %}
-        
-        <form method="POST">
-            {% csrf_token %}
-            <div>
-                <h1>Sign Up</h1>
-                <div>
-                    <h3>Username:</h3>
-                    {{ form.username }}
-                </div>
-                <div>
-                    <h3>Password:</h3>
-                    {{ form.password1 }}
-                </div>
-                <div>
-                    <h3>Confirm Password:</h3>
-                    {{ form.password2 }}
-                </div>
-                <input type="submit" value="Sign Up">
-            </div>
-        </form>
-        <div>
-            <p>Have an account?</p>
-            <a href="{% url 'signup' %}">Log In</a>
-        </div>
-    </body>
-</html> -->

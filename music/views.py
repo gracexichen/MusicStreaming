@@ -185,7 +185,7 @@ def signup_view(request):
             form.save()
             return HttpResponseRedirect(reverse('login'))
         else:
-            return HttpResponseRedirect(reverse('signup'))
+            return render(request, "music/signup.html", {"form": form})
     else:
         form = UserCreationForm()
         context = {

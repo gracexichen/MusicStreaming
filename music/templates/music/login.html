@@ -25,6 +25,7 @@
             <div class="right-login">
                 <form method="POST" class="login-form-style login-form-items">
                     {% csrf_token %}
+                    <h3 class="login-errors">{{ message }}</h3>
                     <h1 class="login-title">Log In</h1>
                     <h3 class="field-title">Username:</h3>
                     <input type="text" name="username">
